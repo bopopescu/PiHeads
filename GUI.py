@@ -16,8 +16,6 @@ class GUI:
             self.cyrideLabel1.configure(text=self.p.getPrediction())
             self.cyrideLabel1.after(1000, self.update_label)
             self.count += 1
-        print(self.count)
-        print(self.p.getPrediction())
 
 root = tk.Tk()
 root.attributes('-fullscreen', True)
