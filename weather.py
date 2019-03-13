@@ -9,7 +9,22 @@ response.raise_for_status()
 weatherData = json.loads(response.text)
 
 # Print weather descriptions
-w = weatherData['main']
-print(f"Temperature: {w['temp']} °F")
-print(f"High: {w['temp_max']} °F")
-print(f"Low: {w['temp_min']} °F")
+main = weatherData['main']
+conditions = weatherData['weather']
+
+class Weather:
+    def getTemp(self):
+        return main['temp']
+
+    def getHigh(self):
+        return main['temp_max']
+
+    def getlow(self):
+        return main['temp_min']
+
+    def getConditions(self):
+        return conditions[0]['main']
+
+    def displayConditions(self):
+        if self.getConditions() == "Rain":
+            return "rain.gif"
