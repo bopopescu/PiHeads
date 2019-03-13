@@ -17,6 +17,7 @@ class GUI:
             self.cyrideLabel1.after(1000, self.update_label)
             self.count += 1
 
+
 root = tk.Tk()
 root.attributes('-fullscreen', True)
 root.configure(background='black')
