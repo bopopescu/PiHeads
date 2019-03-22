@@ -4,7 +4,7 @@ import time
 
 class GUI:
     def __init__(self, master):
-        self.p = cyride.Predictions(930)
+        self.p = cyride.Predictions(822)
         self.cyrideLabel1 = tk.Label(master)
         self.cyrideLabel1.grid(row=0, column=0)
         self.cyrideLabel1.configure(text=self.p.getPrediction(), fg='white', bg='black', font=("Helvetica", 50))
@@ -16,10 +16,13 @@ class GUI:
             self.cyrideLabel1.configure(text=self.p.getPrediction())
             self.cyrideLabel1.after(1000, self.update_label)
             self.count += 1
+        else:
+            root.destroy()
 
 
 root = tk.Tk()
 root.attributes('-fullscreen', True)
 root.configure(background='black')
-GUI(root)
-root.mainloop()
+while(True):
+    GUI(root)
+    root.mainloop()
