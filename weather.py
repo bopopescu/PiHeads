@@ -16,33 +16,29 @@ conditions = weatherData['weather']
 
 class Weather:
     def __init__(self):
-        self.temp = int(self.getTemp())
-        self.high = int(self.getHigh())
-        self.low = int(self.getlow())
-        self.condition = self.getConditions()
+        self.temp = "{} °F".format(round(main['temp']))
+        self.high = "{} °F".format(round(main['temp_max']))
+        self.low = "{} °F".format(round(main['temp_min']))
+        self.condition = conditions[0]['main']
         self.conditionFile = self.displayConditions()
-
-    def getTemp(self):
-        return main['temp']
-
-    def getHigh(self):
-        return main['temp_max']
-
-    def getlow(self):
-        return main['temp_min']
-
-    def getConditions(self):
-        return conditions[0]['main']
+        self.wind = "{} {} mph".format(self.windDirection(), self.windSpeed())
+        self.description = conditions[0]['description']
+        self.humidity = "{}%".format(main['humidity'])
+        self.visibility = self.visibility()
 
     def displayConditions(self):
-        if self.getConditions() == "Clouds":
+        if self.condition == "Clouds":
             return "clouds.gif"
-        elif self.getConditions() == "Sunny":
+        elif self.condition == "Sunny":
             return "sunny.gif"
-        elif self.getConditions() == "Partial Clouds":
-            return "partial-clouds.gif"
-        elif self.getConditions() == "Rain":
+        elif self.condition == "Rain" or self.condition == "Drizzle" or self.condition == "Mist":
             return "rain.gif"
+        elif self.condition == "Thunderstorm":
+            return "thunder.gif"
+        elif self.condition == "Snow":
+            return "snow.gif"
+        elif self.condition == "Fog":
+            return "fog.gif"
         # add other weather conditions
 
         # defaults to sun image
@@ -55,11 +51,11 @@ class Weather:
         return time.strftime("%I:%M %p", time.localtime(weatherData['sys']['sunset']))
 
     def windSpeed(self):
-        return int(weatherData['wind']['speed'])
+        return round(weatherData['wind']['speed'])
 
     def windDirection(self):
         direction = weatherData['wind']['deg']
-        if 23 <= direction <= 67:
+        if 23 <= direction <= 67 or 293 <= direction <= 337:
             return "NE"
         elif 68 <= direction <= 113:
             return "E"
@@ -71,7 +67,13 @@ class Weather:
             return "SW"
         elif 248 <= direction <= 292:
             return "W"
-        elif 293 <= direction <= 337:
-            return "NE"
         else:
             return "N"
+
+    def visibility(self):
+        v = weatherData['visibility'] * 0.000621371
+        if v < 1:
+            v = round(v, 1)
+        else:
+            v = round(v)
+        return "{} mi".format(v)

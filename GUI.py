@@ -1,7 +1,7 @@
 import tkinter as tk
 import cyride
 import time
-import weather as w
+import weather
 
 class GUI:
     def __init__(self, master):
@@ -11,18 +11,19 @@ class GUI:
         self.cyrideLabel1.configure(text=self.p.getPrediction(), fg='white', bg='black', font=("Helvetica", 50))
 
         # Weather
-        self.weather = w.Weather()
-        self.temp = "{} °F".format(self.weather.temp)
+        self.w = weather.Weather()
         self.tempLabel = tk.Label(master)
         self.tempLabel.grid(row=4, column=0)
-        self.tempLabel.configure(text=self.temp, fg='white', bg='black', font=("Helvetica", 50))
+        self.tempLabel.configure(text=self.w.temp, fg='white', bg='black', font=("Helvetica", 50))
+
         self.conditionLabel = tk.Label(master)
         self.conditionLabel.grid(row=2, column=0)
-        self.conditionLabel.configure(text=self.weather.condition, fg='white', bg='black', font=("Helvetica", 50))
-        self.conditionPict = tk.PhotoImage(file=self.weather.conditionFile)
-        self.conditionPictLabel = tk.Label(master)
-        self.conditionPictLabel.grid(row=3, column=0)
-        self.conditionPictLabel.configure(image=self.conditionPict, bg='black')
+        self.conditionLabel.configure(text=self.w.condition, fg='white', bg='black', font=("Helvetica", 50))
+
+        self.conditionImage = tk.PhotoImage(file=self.w.conditionFile)
+        self.conditionImageLabel = tk.Label(master)
+        self.conditionImageLabel.grid(row=3, column=0)
+        self.conditionImageLabel.configure(image=self.conditionImage, bg='black')
 
         self.count = 0
         self.update_label()
