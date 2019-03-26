@@ -13,6 +13,13 @@ main = weatherData['main']
 conditions = weatherData['weather']
 
 class Weather:
+    def __init__(self):
+        self.temp = int(self.getTemp())
+        self.high = int(self.getHigh())
+        self.low = int(self.getlow())
+        self.condition = self.getConditions()
+        self.conditionFile = self.displayConditions()
+        
     def getTemp(self):
         return main['temp']
 
@@ -26,5 +33,15 @@ class Weather:
         return conditions[0]['main']
 
     def displayConditions(self):
-        if self.getConditions() == "Rain":
+        if self.getConditions() == "Clouds":
+            return "clouds.gif"
+        elif self.getConditions() == "Sunny":
+            return "sunny.gif"
+        elif self.getConditions() == "Partial Clouds":
+            return "partial-clouds.gif"
+        elif self.getConditions() == "Rain":
             return "rain.gif"
+        # add other weather conditions
+
+        # defaults to sun image
+        return "sunny.gif"
