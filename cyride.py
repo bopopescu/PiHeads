@@ -33,4 +33,4 @@ class Predictions:
 
         minutes = int(seconds) // 60
         seconds = int(seconds) % 60
-        return minutes,"minutes and ",seconds," seconds."
+        return "{} minutes and {} seconds.".format(minutes, seconds)

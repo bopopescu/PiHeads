@@ -12,7 +12,7 @@ class GUI:
 
         # Weather
         self.weather = w.Weather()
-        self.temp = self.weather.temp, " °F"
+        self.temp = "{} °F".format(self.weather.temp)
         self.tempLabel = tk.Label(master)
         self.tempLabel.grid(row=4, column=0)
         self.tempLabel.configure(text=self.temp, fg='white', bg='black', font=("Helvetica", 50))
