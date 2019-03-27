@@ -29,7 +29,7 @@ class Weather:
     def displayConditions(self):
         if self.condition == "Clouds":
             return "clouds.gif"
-        elif self.condition == "Sunny":
+        elif self.condition == "Clear":
             return "sunny.gif"
         elif self.condition == "Rain" or self.condition == "Drizzle" or self.condition == "Mist":
             return "rain.gif"
@@ -77,3 +77,18 @@ class Weather:
         else:
             v = round(v)
         return "{} mi".format(v)
+
+        # # Weather
+        # self.w = weather.Weather()
+        # self.tempLabel = tk.Label(master)
+        # self.tempLabel.grid(row=4, column=0)
+        # self.tempLabel.configure(text=self.w.temp, fg='white', bg='black', font=("Helvetica", 50))
+        #
+        # self.conditionLabel = tk.Label(master)
+        # self.conditionLabel.grid(row=2, column=0)
+        # self.conditionLabel.configure(text=self.w.condition, fg='white', bg='black', font=("Helvetica", 50))
+        #
+        # self.conditionImage = tk.PhotoImage(file=self.w.conditionFile)
+        # self.conditionImageLabel = tk.Label(master)
+        # self.conditionImageLabel.grid(row=3, column=0)
+        # self.conditionImageLabel.configure(image=self.conditionImage, bg='black')
