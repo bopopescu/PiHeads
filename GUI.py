@@ -56,7 +56,6 @@ class StartPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        #self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
         self.controller = controller
         self.Cardinal = cyride.Predictions(930)
@@ -109,6 +108,8 @@ class StartPage(tk.Frame):
         self.GreenPrediction.configure(text=self.Green.getPrediction())
         self.BrownPrediction.configure(text=self.Brown.getPrediction())
         self.BluePrediction.configure(text=self.Blue.getPrediction())
+        self.Time = datetime.datetime.now()
+        self.Clock.configure(text=self.Time.strftime("%Y-%m-%d %H:%M"))
 
         self.CardinalPrediction.after(5000, self.update_label)
 
