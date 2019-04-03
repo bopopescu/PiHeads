@@ -1,7 +1,9 @@
-import tkinter as tk                # python 3
-from tkinter import font  as tkfont # python 3
+import tkinter as tk  # python 3
+from tkinter import font  as tkfont  # python 3
 import cyride
 import datetime
+import weather
+
 
 class SampleApp(tk.Tk):
 
@@ -30,7 +32,6 @@ class SampleApp(tk.Tk):
         self.currFrame = 3
         self.id = self.after(1000, self.start)
 
-
     def show_frame(self):
         '''Show a frame for the given page name'''
         if self.currFrame == 0:
@@ -51,12 +52,10 @@ class SampleApp(tk.Tk):
         self.id = self.after(10000, self.start)
 
 
-
 class StartPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        #self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
         self.controller = controller
         self.Cardinal = cyride.Predictions(930)
@@ -65,7 +64,8 @@ class StartPage(tk.Frame):
         self.Brown = cyride.Predictions(862)
         self.Blue = cyride.Predictions(830)
 
-        self.Label = tk.Label(self, text="CyRide Predictions at Coover Hall:", fg='white', bg='black', font=("Helvetica", 50))
+        self.Label = tk.Label(self, text="CyRide Predictions at Coover Hall:", fg='white', bg='black',
+                              font=("Helvetica", 50))
         self.Label.pack()
 
         self.CardinalPrediction = tk.Label(self)
@@ -90,14 +90,16 @@ class StartPage(tk.Frame):
         self.BlueLabel.pack()
         self.BluePrediction.pack()
 
-        self.CardinalPrediction.configure(text=self.Cardinal.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
+        self.CardinalPrediction.configure(text=self.Cardinal.getPrediction(), fg='white', bg='black',
+                                          font=("Helvetica", 20))
         self.GoldPrediction.configure(text=self.Gold.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
         self.GreenPrediction.configure(text=self.Green.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
         self.BrownPrediction.configure(text=self.Brown.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
         self.BluePrediction.configure(text=self.Blue.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
 
         self.Time = datetime.datetime.now()
-        self.Clock = tk.Label(self, text=self.Time.strftime("%Y-%m-%d %H:%M"), fg='white', bg='black', font=("Helvetica", 15))
+        self.Clock = tk.Label(self, text=self.Time.strftime("%Y-%m-%d %H:%M"), fg='white', bg='black',
+                              font=("Helvetica", 15))
         self.Clock.pack(side='bottom')
 
         self.count = 0
@@ -109,6 +111,8 @@ class StartPage(tk.Frame):
         self.GreenPrediction.configure(text=self.Green.getPrediction())
         self.BrownPrediction.configure(text=self.Brown.getPrediction())
         self.BluePrediction.configure(text=self.Blue.getPrediction())
+        self.Time = datetime.datetime.now()
+        self.Clock.configure(text=self.Time.strftime("%Y-%m-%d %H:%M"))
 
         self.CardinalPrediction.after(5000, self.update_label)
 
@@ -119,7 +123,45 @@ class PageOne(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         label = tk.Label(self, text="This is page 1", font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
+        # label.pack(side="top", fill="x", pady=10)
+
+        self.w = weather.Weather()
+        self.tempLabel = tk.Label(self)
+        self.tempLabel.grid(row=4, column=1, columnspan=2, ipadx='400')
+        self.tempLabel.configure(text=self.w.temp, fg='white', bg='black', font=("Helvetica", 50))
+
+        self.conditionLabel = tk.Label(self)
+        self.conditionLabel.grid(row=2, column=1, columnspan=2)
+        self.conditionLabel.configure(text=self.w.condition, fg='white', bg='black', font=("Helvetica", 50))
+
+        self.conditionImage = tk.PhotoImage(file=self.w.conditionFile)
+        self.conditionImageLabel = tk.Label(self)
+        self.conditionImageLabel.grid(row=3, column=1, columnspan=2)
+        self.conditionImageLabel.configure(image=self.conditionImage, bg='black')
+
+        # Sunrise / Sunset
+        self.sunriseLabel = tk.Label(self)
+        self.sunriseLabel.grid(row=7, column=0, sticky='W')
+        self.sunriseLabel.configure(text=self.w.sunrise(), fg='white', bg='black', font=("Helvetica", 50))
+        self.sunriseLabel1 = tk.Label(self)
+        self.sunriseLabel1.grid(row=6, column=0, sticky='W')
+        self.sunriseLabel1.configure(text="Sunrise: ", fg='white', bg='black', font=("Helvetica", 50))
+
+        self.sunsetLabel = tk.Label(self)
+        self.sunsetLabel.grid(row=7, column=3, sticky='E')
+        self.sunsetLabel.configure(text=self.w.sunset(), fg='white', bg='black', font=("Helvetica", 50))
+        self.sunsetLabel1 = tk.Label(self)
+        self.sunsetLabel1.grid(row=6, column=3, sticky='E')
+        self.sunsetLabel1.configure(text="Sunset: ", fg='white', bg='black', font=("Helvetica", 50))
+
+        # High / Low
+        self.highLabel = tk.Label(self)
+        self.highLabel.grid(row=5, column=1)
+        self.highLabel.configure(text=self.w.high, fg='white', bg='black', font=("Helvetica", 50))
+
+        self.lowLabel = tk.Label(self)
+        self.lowLabel.grid(row=5, column=2)
+        self.lowLabel.configure(text=self.w.low, fg='white', bg='black', font=("Helvetica", 50))
 
 
 class PageTwo(tk.Frame):

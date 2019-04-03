@@ -56,7 +56,7 @@ class StartPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        #self.rowconfigure(0, weight=1)
+        # self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
         self.controller = controller
         self.Cardinal = cyride.Predictions(930)
@@ -65,7 +65,8 @@ class StartPage(tk.Frame):
         self.Brown = cyride.Predictions(862)
         self.Blue = cyride.Predictions(830)
 
-        self.Label = tk.Label(self, text="CyRide Predictions at Coover Hall:", fg='white', bg='black', font=("Helvetica", 50))
+        self.Label = tk.Label(self, text="CyRide Predictions at Coover Hall:", fg='white', bg='black',
+                              font=("Helvetica", 50))
         self.Label.pack()
 
         self.CardinalPrediction = tk.Label(self)
@@ -90,14 +91,16 @@ class StartPage(tk.Frame):
         self.BlueLabel.pack()
         self.BluePrediction.pack()
 
-        self.CardinalPrediction.configure(text=self.Cardinal.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
+        self.CardinalPrediction.configure(text=self.Cardinal.getPrediction(), fg='white', bg='black',
+                                          font=("Helvetica", 20))
         self.GoldPrediction.configure(text=self.Gold.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
         self.GreenPrediction.configure(text=self.Green.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
         self.BrownPrediction.configure(text=self.Brown.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
         self.BluePrediction.configure(text=self.Blue.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
 
         self.Time = datetime.datetime.now()
-        self.Clock = tk.Label(self, text=self.Time.strftime("%Y-%m-%d %H:%M"), fg='white', bg='black', font=("Helvetica", 15))
+        self.Clock = tk.Label(self, text=self.Time.strftime("%Y-%m-%d %H:%M"), fg='white', bg='black',
+                              font=("Helvetica", 15))
         self.Clock.pack(side='bottom')
 
         self.count = 0
