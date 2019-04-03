@@ -52,6 +52,7 @@ class SampleApp(tk.Tk):
 
 
 
+
 class StartPage(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -96,7 +97,7 @@ class StartPage(tk.Frame):
         self.BluePrediction.configure(text=self.Blue.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
 
         self.Time = datetime.datetime.now()
-        self.Clock = tk.Label(self, text=self.Time.strftime("%Y-%m-%d %H:%M"), fg='white', bg='black', font=("Helvetica", 15))
+        self.Clock = tk.Label(self, text=GetDateTime().getDate(), fg='white', bg='black', font=("Helvetica", 15))
         self.Clock.pack(side='bottom')
 
         self.count = 0
@@ -109,7 +110,7 @@ class StartPage(tk.Frame):
         self.BrownPrediction.configure(text=self.Brown.getPrediction())
         self.BluePrediction.configure(text=self.Blue.getPrediction())
         self.Time = datetime.datetime.now()
-        self.Clock.configure(text=self.Time.strftime("%Y-%m-%d %H:%M"))
+        self.Clock.configure(text=GetDateTime().getDate())
 
         self.CardinalPrediction.after(5000, self.update_label)
 
@@ -124,13 +125,51 @@ class PageOne(tk.Frame):
 
 
 class PageTwo(tk.Frame):
-
+    
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         label = tk.Label(self, text="This is page 2", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
 
+class GetDateTime():
+    def __init__(self):
+        self.date = datetime.datetime.today()
+        self.hours = self.date.hour % 13
+        if(self.date.hour > 12): self.ampm = "pm"
+        else: self.ampm = "am"
+
+    def getDate(self):
+        return "{} {} {} {} | {}:{} {}".format(self.getDay(self.date.day), self.getMonth(self.date.month), self.date.day, self.date.year, self.hours, self.date.minute, self.ampm)
+
+
+    def getMonth(self, month):
+        switcher = {
+            1: "Janurary",
+            2: "Febuary",
+            3: "March",
+            4: "April",
+            5: "May",
+            6: "June",
+            7: "July",
+            8: "August",
+            9: "September",
+            10: "October",
+            11: "November",
+            12: "December"
+        }
+        return switcher.get(month)
+    def getDay(self, day):
+        switcher = {
+            0: "Monday",
+            1: "Tuesday",
+            2: "Wednesday",
+            3: "Thursday",
+            4: "Friday",
+            5: "Saturday",
+            6: "Sunday"
+        }
+        return switcher.get(day)
 
 if __name__ == "__main__":
     app = SampleApp()
