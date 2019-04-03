@@ -10,10 +10,11 @@ response = requests.get(url)
 response.raise_for_status()
 
 response1 = requests.get(forecastUrl)
+response.raise_for_status()
 
 # Load JSON data into a Python variable
 weatherData = json.loads(response.text)
-forecastData = json.loads()
+forecastData = json.loads(response1.text)
 
 # Print weather descriptions
 main = weatherData['main']
