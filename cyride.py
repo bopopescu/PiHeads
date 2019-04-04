@@ -31,6 +31,9 @@ class Predictions:
             for elem in self.tree.iterfind('predictions[@routeTag="830"]/direction/prediction[1]'):
                 seconds = elem.attrib["seconds"]
 
-        minutes = int(seconds) // 60
-        seconds = int(seconds) % 60
-        return "{} minutes and {} seconds".format(minutes, seconds)
+        try:
+            minutes = int(seconds) // 60
+            seconds = int(seconds) % 60
+            return "{} minutes and {} seconds".format(minutes, seconds)
+        except UnboundLocalError:
+            return "Bus unavailable"

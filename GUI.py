@@ -161,8 +161,6 @@ class PageOne(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is page 1", font=controller.title_font)
-        # label.pack(side="top", fill="x", pady=10)
 
         self.w = weather.Weather()
         self.tempLabel = tk.Label(self)
@@ -211,15 +209,25 @@ class PageTwo(tk.Frame):
         label = tk.Label(self, text="This is page 2", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
 
-        self.homeLabel = tk.Label(self)
-        self.homeLabel.configure(text=home.check_if_home(), fg='white', bg='black', font=("Helvetica", 50))
-        self.homeLabel.pack()
+        self.kyleLabel = tk.Label(self)
+        self.kyleLabel.configure(text=home.check_if_home('Kyle'), fg='white', bg='black', font=("Helvetica", 50))
+        self.kyleLabel.pack()
+
+        self.samLabel = tk.Label(self)
+        self.samLabel.configure(text=home.check_if_home('Sam'), fg='white', bg='black', font=("Helvetica", 50))
+        self.samLabel.pack()
+
+        self.seanLabel = tk.Label(self)
+        self.seanLabel.configure(text=home.check_if_home('Sean'), fg='white', bg='black', font=("Helvetica", 50))
+        self.seanLabel.pack()
 
         self.update_home()
 
     def update_home(self):
-        self.homeLabel.configure(text=home.check_if_home())
-        self.homeLabel.after(5000, self.update_home)
+        self.kyleLabel.configure(text=home.check_if_home('Kyle'))
+        self.samLabel.configure(text=home.check_if_home('Sam'))
+        self.seanLabel.configure(text=home.check_if_home('Sean'))
+        self.kyleLabel.after(5000, self.update_home)
 
 
 if __name__ == "__main__":
