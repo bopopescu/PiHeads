@@ -3,6 +3,7 @@ from tkinter import font  as tkfont  # python 3
 import cyride
 import datetime
 import weather
+import IsRoomMateHome as home
 
 
 class SampleApp(tk.Tk):
@@ -209,6 +210,16 @@ class PageTwo(tk.Frame):
         self.controller = controller
         label = tk.Label(self, text="This is page 2", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
+
+        self.homeLabel = tk.Label(self)
+        self.homeLabel.configure(text=home.check_if_home(), fg='white', bg='black', font=("Helvetica", 50))
+        self.homeLabel.pack()
+
+        self.update_home()
+
+    def update_home(self):
+        self.homeLabel.configure(text=home.check_if_home())
+        self.homeLabel.after(5000, self.update_home)
 
 
 if __name__ == "__main__":
