@@ -13,8 +13,8 @@ def check_if_home(name):
     data = json.loads(response.text)
 
     if name is 'Kyle':
-        return "{}: {}".format(data['feeds'][0]['name'],data['feeds'][0]['last_value']);
+        return "{}: {}".format(data['feeds'][0]['name'], data['feeds'][0]['last_value'])
     if name is 'Sam':
-        return "{}: {}".format(data['feeds'][1]['name'],data['feeds'][1]['last_value']);
+        return "{}: {}".format(data['feeds'][1]['name'], data['feeds'][1]['last_value'])
     if name is 'Sean':
-        return "{}: {}".format(data['feeds'][2]['name'],data['feeds'][2]['last_value']);
+        return "{}: {}".format(data['feeds'][2]['name'], data['feeds'][2]['last_value'])
