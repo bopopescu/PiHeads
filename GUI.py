@@ -67,7 +67,7 @@ class StartPage(tk.Frame):
 
         self.Label = tk.Label(self, text="CyRide Predictions at Coover Hall:", fg='white', bg='black',
                               font=("Helvetica", 50))
-        self.Label.pack()
+        self.Label.pack(pady=25)
 
         self.CardinalPrediction = tk.Label(self)
         self.CardinalLabel = tk.Label(self, text="21 Cardinal:", fg='Red', bg='black', font=("Helvetica", 25))
@@ -206,20 +206,20 @@ class PageTwo(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is page 2", font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
+        label = tk.Label(self, text="Roommates:", fg='white', bg='black', font=("Helvetica", 50))
+        label.pack(side="top", fill="x", pady=25)
 
         self.kyleLabel = tk.Label(self)
-        self.kyleLabel.configure(text=home.check_if_home('Kyle'), fg='white', bg='black', font=("Helvetica", 50))
-        self.kyleLabel.pack()
+        self.kyleLabel.configure(text=home.check_if_home('Kyle'), fg='white', bg='black', font=("Helvetica", 25))
+        self.kyleLabel.pack(pady=10)
 
         self.samLabel = tk.Label(self)
-        self.samLabel.configure(text=home.check_if_home('Sam'), fg='white', bg='black', font=("Helvetica", 50))
-        self.samLabel.pack()
+        self.samLabel.configure(text=home.check_if_home('Sam'), fg='white', bg='black', font=("Helvetica", 25))
+        self.samLabel.pack(pady=10)
 
         self.seanLabel = tk.Label(self)
-        self.seanLabel.configure(text=home.check_if_home('Sean'), fg='white', bg='black', font=("Helvetica", 50))
-        self.seanLabel.pack()
+        self.seanLabel.configure(text=home.check_if_home('Sean'), fg='white', bg='black', font=("Helvetica", 25))
+        self.seanLabel.pack(pady=10)
 
         self.update_home()
 
