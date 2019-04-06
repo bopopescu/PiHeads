@@ -13,7 +13,7 @@ response1 = requests.get(forecastUrl)
 
 # Load JSON data into a Python variable
 weatherData = json.loads(response.text)
-forecastData = json.loads()
+#forecastData = json.loads()
 
 # Print weather descriptions
 main = weatherData['main']

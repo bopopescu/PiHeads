@@ -3,6 +3,8 @@ from tkinter import font  as tkfont  # python 3
 import cyride
 import datetime
 import weather
+import json
+import requests
 
 
 class SampleApp(tk.Tk):
@@ -102,7 +104,6 @@ class StartPage(tk.Frame):
                               font=("Helvetica", 15))
         self.Clock.pack(side='bottom')
 
-        self.count = 0
         self.update_label()
 
     def update_label(self):
@@ -207,9 +208,24 @@ class PageTwo(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is page 2", font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
+        self.Label = tk.Label(self, text="Roommates Currently Home:", fg='white', bg='black', font=("Helvetica", 50))
+        self.Label.pack()
+        self.Label1 = tk.Label(self, text="person1", fg='black', bg='black', font=("Helvetica", 25))
+        self.Label1.pack()
+        self.update()
 
+    def update(self):
+        if self.Person1Home():
+            self.Label1.configure(fg='white')
+        else:
+            self.Label1.configure(fg='black')
+
+
+    def Person1Home(self):
+        url = 'https://io.adafruit.com/api/v2/Zeldatwili/feeds/person-home'
+        response = requests.get(url)
+        result = json.loads(response.text)
+        return result['last_value']
 
 if __name__ == "__main__":
     app = SampleApp()
