@@ -3,8 +3,7 @@ from tkinter import font  as tkfont  # python 3
 import cyride
 import datetime
 import weather
-import json
-import requests
+import IsRoomMateHome as home
 
 
 class SampleApp(tk.Tk):
@@ -104,6 +103,7 @@ class StartPage(tk.Frame):
                               font=("Helvetica", 15))
         self.Clock.pack(side='bottom')
 
+        self.count = 0
         self.update_label()
 
     def update_label(self):
@@ -161,8 +161,6 @@ class PageOne(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is page 1", font=controller.title_font)
-        # label.pack(side="top", fill="x", pady=10)
 
         self.w = weather.Weather()
         self.tempLabel = tk.Label(self)
@@ -208,24 +206,29 @@ class PageTwo(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        self.Label = tk.Label(self, text="Roommates Currently Home:", fg='white', bg='black', font=("Helvetica", 50))
-        self.Label.pack()
-        self.Label1 = tk.Label(self, text="person1", fg='black', bg='black', font=("Helvetica", 25))
-        self.Label1.pack()
-        self.update()
+        label = tk.Label(self, text="This is page 2", font=controller.title_font)
+        label.pack(side="top", fill="x", pady=10)
 
-    def update(self):
-        if self.Person1Home():
-            self.Label1.configure(fg='white')
-        else:
-            self.Label1.configure(fg='black')
+        self.kyleLabel = tk.Label(self)
+        self.kyleLabel.configure(text=home.check_if_home('Kyle'), fg='white', bg='black', font=("Helvetica", 50))
+        self.kyleLabel.pack()
 
+        self.samLabel = tk.Label(self)
+        self.samLabel.configure(text=home.check_if_home('Sam'), fg='white', bg='black', font=("Helvetica", 50))
+        self.samLabel.pack()
 
-    def Person1Home(self):
-        url = 'https://io.adafruit.com/api/v2/Zeldatwili/feeds/person-home'
-        response = requests.get(url)
-        result = json.loads(response.text)
-        return result['last_value']
+        self.seanLabel = tk.Label(self)
+        self.seanLabel.configure(text=home.check_if_home('Sean'), fg='white', bg='black', font=("Helvetica", 50))
+        self.seanLabel.pack()
+
+        self.update_home()
+
+    def update_home(self):
+        self.kyleLabel.configure(text=home.check_if_home('Kyle'))
+        self.samLabel.configure(text=home.check_if_home('Sam'))
+        self.seanLabel.configure(text=home.check_if_home('Sean'))
+        self.kyleLabel.after(5000, self.update_home)
+
 
 if __name__ == "__main__":
     app = SampleApp()
