@@ -4,6 +4,7 @@ import cyride
 import time
 import weather
 import IsRoomMateHome as home
+import GoogleCalendar as calendar
 
 
 class SampleApp(tk.Tk):
@@ -182,11 +183,29 @@ class PageTwo(tk.Frame):
 
         self.update_home()
 
+        ##Calendars
+        label2 = tk.Label(self, text="Calendars:", fg='white', bg='black', font=("Helvetica", 50))
+        label2.pack(side="top", fill="x", pady=25)
+        self.kyleCal = tk.Label(self)
+        self.kyleCal.configure(text=calendar.Get_Google_Calendar('Kyle'), fg='white', bg='black', font=("Helvetica", 25))
+        self.kyleCal.pack(pady=5)
+
+        self.samCal = tk.Label(self)
+        self.samCal.configure(text=calendar.Get_Google_Calendar('Sam'), fg='white', bg='black',font=("Helvetica", 25))
+        self.samCal.pack(pady=5)
+
+        self.seanCal = tk.Label(self)
+        self.seanCal.configure(text=calendar.Get_Google_Calendar('Sean'), fg='white', bg='black',font=("Helvetica", 25))
+        self.seanCal.pack(pady=5)
+
+
     def update_home(self):
         self.kyleLabel.configure(text=home.check_if_home('Kyle'))
         self.samLabel.configure(text=home.check_if_home('Sam'))
         self.seanLabel.configure(text=home.check_if_home('Sean'))
         self.kyleLabel.after(5000, self.update_home)
+    #def update_calendar(self):
+        #Get_Google_Calendar()
 
 
 if __name__ == "__main__":
