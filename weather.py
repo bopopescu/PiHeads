@@ -84,7 +84,7 @@ class Forecast:
         self.forecastData = json.loads(response1.text)
 
     def getForecast(self):
-        day = {'name': '', 'high': 0, 'low': 0}
+        day = {'name': '', 'high': 0, 'low': 0, 'description': ''}
         out = {'day1': day.copy(), 'day2': day.copy(), 'day3': day.copy(), 'day4': day.copy()}
         lastDay = time.strftime("%a", time.localtime(self.forecastData['list'][0]['dt']))
         j = 0
@@ -96,23 +96,49 @@ class Forecast:
             if lastDay not in currDay and j < 32:
                 dayNum += 1
                 out['day{}'.format(dayNum)]['name'] = currDay
-                out['day{}'.format(dayNum)]['high'], out['day{}'.format(dayNum)]['low'] = self.getHighLow(j)
+                out['day{}'.format(dayNum)]['high'],\
+                    out['day{}'.format(dayNum)]['low'],\
+                    out['day{}'.format(dayNum)]['description'] = self.getDayStats(j)
                 lastDay = time.strftime("%a", time.localtime(self.forecastData['list'][j]['dt']))
 
                 if dayNum is 4:
                     return out
             j += 1
 
-    def getHighLow(self, start):
+    def getDayStats(self, start):
         i = start
         min = self.forecastData['list'][i]['main']['temp_min']
         max = self.forecastData['list'][i]['main']['temp_min']
+        dayLock = False
+        descList = []
+        self.desc = ''
+
         while i < (start + 8):
+            # High and Low
             if self.forecastData['list'][i]['main']['temp_min'] < min:
                 min = self.forecastData['list'][i]['main']['temp_min']
             if self.forecastData['list'][i]['main']['temp_max'] > max:
                 max = self.forecastData['list'][i]['main']['temp_max']
 
+            # Weather Description
+            if dayLock is False:
+                self.desc = self.forecastData['list'][i]['weather'][0]['main']
+                # if desc is rain or thunder or snow, return and lock
+                if self.desc == 'Rain' or self.desc == 'Snow' or self.desc == 'Thunderstorm':
+                    dayLock = True
+                # Otherwise, add condition to an array to be compared later
+                else:
+                    descList.append(self.desc)
+
             i += 1
 
-        return round(max), round(min)
+        if dayLock is False:
+            dict = {}
+            count, itm = 0, ''
+            for item in reversed(descList):
+                dict[item] = dict.get(item, 0) + 1
+                if dict[item] >= count:
+                    count, itm = dict[item], item
+            self.desc = itm
+
+        return round(max), round(min), self.desc
