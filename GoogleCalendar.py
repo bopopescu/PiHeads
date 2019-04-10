@@ -135,6 +135,6 @@ def Get_Google_Calendar(name):
             samEvents += (start + " " + event['summary'] + "\n")
         return samEvents
 
-    print (kyleEvents + seanEvents + samEvents)
+    ##print (kyleEvents + seanEvents + samEvents)
 if __name__ == '__Get_Google_Calendar__':
     Get_Google_Calendar()
