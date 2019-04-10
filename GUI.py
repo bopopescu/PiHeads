@@ -198,15 +198,19 @@ class PageTwo(tk.Frame):
         self.seanCal.configure(text=calendar.Get_Google_Calendar('Sean'), fg='white', bg='black',font=("Helvetica", 25))
         self.seanCal.pack(pady=5)
 
+        self.update_cal()
 
     def update_home(self):
         self.kyleLabel.configure(text=home.check_if_home('Kyle'))
         self.samLabel.configure(text=home.check_if_home('Sam'))
         self.seanLabel.configure(text=home.check_if_home('Sean'))
         self.kyleLabel.after(5000, self.update_home)
-    #def update_calendar(self):
-        #Get_Google_Calendar()
 
+    def update_cal(self):
+        self.kyleCal.configure(text=calendar.Get_Google_Calendar("Kyle"))
+        self.samCal.configure(text=calendar.Get_Google_Calendar("Sam"))
+        self.seanCal.configure(text=calendar.Get_Google_Calendar("Sean"))
+        self.kyleCal.after(10000, self.update_cal)
 
 if __name__ == "__main__":
     app = SampleApp()

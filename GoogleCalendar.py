@@ -44,7 +44,7 @@ def Get_Google_Calendar(name):
         now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
         ##print('Getting the upcoming 5 events')
         events_result = service.events().list(calendarId='primary', timeMin=now,
-                                            maxResults=5, singleEvents=True,
+                                            maxResults=3, singleEvents=True,
                                             orderBy='startTime').execute()
         events = events_result.get('items', [])
 
@@ -85,7 +85,7 @@ def Get_Google_Calendar(name):
         now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
         ##print('Getting the upcoming 5 events')
         events_result = service.events().list(calendarId='primary', timeMin=now,
-                                              maxResults=5, singleEvents=True,
+                                              maxResults=3, singleEvents=True,
                                               orderBy='startTime').execute()
         events = events_result.get('items', [])
 
@@ -124,7 +124,7 @@ def Get_Google_Calendar(name):
         now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
         ##print('Getting the upcoming 5 events')
         events_result = service.events().list(calendarId='primary', timeMin=now,
-                                              maxResults=5, singleEvents=True,
+                                              maxResults=3, singleEvents=True,
                                               orderBy='startTime').execute()
         events = events_result.get('items', [])
 
@@ -135,14 +135,6 @@ def Get_Google_Calendar(name):
             samEvents += (start + " " + event['summary'] + "\n")
         return samEvents
 
-    ##print (kyleEvents + seanEvents + samEvents)
-
-
-
-
-
-
-
-
-if __name__ == '__main__':
+    print (kyleEvents + seanEvents + samEvents)
+if __name__ == '__Get_Google_Calendar__':
     Get_Google_Calendar()
