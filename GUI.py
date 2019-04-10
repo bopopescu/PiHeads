@@ -1,8 +1,9 @@
 import tkinter as tk  # python 3
 from tkinter import font  as tkfont  # python 3
 import cyride
-import datetime
+import time
 import weather
+import IsRoomMateHome as home
 
 
 class SampleApp(tk.Tk):
@@ -66,7 +67,7 @@ class StartPage(tk.Frame):
 
         self.Label = tk.Label(self, text="CyRide Predictions at Coover Hall:", fg='white', bg='black',
                               font=("Helvetica", 50))
-        self.Label.pack()
+        self.Label.pack(pady=25)
 
         self.CardinalPrediction = tk.Label(self)
         self.CardinalLabel = tk.Label(self, text="21 Cardinal:", fg='Red', bg='black', font=("Helvetica", 25))
@@ -97,8 +98,7 @@ class StartPage(tk.Frame):
         self.BrownPrediction.configure(text=self.Brown.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
         self.BluePrediction.configure(text=self.Blue.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
 
-        self.Time = datetime.datetime.now()
-        self.Clock = tk.Label(self, text=GetDateTime().getDate(), fg='white', bg='black',
+        self.Clock = tk.Label(self, text=time.strftime("%A, %B %d | %I:%M %p"), fg='white', bg='black',
                               font=("Helvetica", 15))
         self.Clock.pack(side='bottom')
 
@@ -111,57 +111,15 @@ class StartPage(tk.Frame):
         self.GreenPrediction.configure(text=self.Green.getPrediction())
         self.BrownPrediction.configure(text=self.Brown.getPrediction())
         self.BluePrediction.configure(text=self.Blue.getPrediction())
-        self.Time = datetime.datetime.now()
-        self.Clock.configure(text=GetDateTime().getDate())
+        self.Clock.configure(text=time.strftime("%A, %B %d | %I:%M %p"))
 
         self.CardinalPrediction.after(5000, self.update_label)
-
-class GetDateTime():
-    def __init__(self):
-        self.date = datetime.datetime.today()
-        self.hours = self.date.hour % 13
-        if(self.date.hour > 12): self.ampm = "pm"
-        else: self.ampm = "am"
-
-    def getDate(self):
-        return "{} {} {} {} | {}:{} {}".format(self.getDay(self.date.day), self.getMonth(self.date.month), self.date.day, self.date.year, self.hours, self.date.minute, self.ampm)
-
-
-    def getMonth(self, month):
-        switcher = {
-            1: "Janurary",
-            2: "Febuary",
-            3: "March",
-            4: "April",
-            5: "May",
-            6: "June",
-            7: "July",
-            8: "August",
-            9: "September",
-            10: "October",
-            11: "November",
-            12: "December"
-        }
-        return switcher.get(month)
-    def getDay(self, day):
-        switcher = {
-            0: "Monday",
-            1: "Tuesday",
-            2: "Wednesday",
-            3: "Thursday",
-            4: "Friday",
-            5: "Saturday",
-            6: "Sunday"
-        }
-        return switcher.get(day)
 
 class PageOne(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is page 1", font=controller.title_font)
-        # label.pack(side="top", fill="x", pady=10)
 
         self.w = weather.Weather()
         self.tempLabel = tk.Label(self)
@@ -207,8 +165,28 @@ class PageTwo(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is page 2", font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
+        label = tk.Label(self, text="Roommates:", fg='white', bg='black', font=("Helvetica", 50))
+        label.pack(side="top", fill="x", pady=25)
+
+        self.kyleLabel = tk.Label(self)
+        self.kyleLabel.configure(text=home.check_if_home('Kyle'), fg='white', bg='black', font=("Helvetica", 25))
+        self.kyleLabel.pack(pady=10)
+
+        self.samLabel = tk.Label(self)
+        self.samLabel.configure(text=home.check_if_home('Sam'), fg='white', bg='black', font=("Helvetica", 25))
+        self.samLabel.pack(pady=10)
+
+        self.seanLabel = tk.Label(self)
+        self.seanLabel.configure(text=home.check_if_home('Sean'), fg='white', bg='black', font=("Helvetica", 25))
+        self.seanLabel.pack(pady=10)
+
+        self.update_home()
+
+    def update_home(self):
+        self.kyleLabel.configure(text=home.check_if_home('Kyle'))
+        self.samLabel.configure(text=home.check_if_home('Sam'))
+        self.seanLabel.configure(text=home.check_if_home('Sean'))
+        self.kyleLabel.after(5000, self.update_home)
 
 
 if __name__ == "__main__":
