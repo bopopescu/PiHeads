@@ -1,7 +1,7 @@
 import tkinter as tk  # python 3
 from tkinter import font  as tkfont  # python 3
 import cyride
-import datetime
+import time
 import weather
 import IsRoomMateHome as home
 
@@ -98,8 +98,7 @@ class StartPage(tk.Frame):
         self.BrownPrediction.configure(text=self.Brown.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
         self.BluePrediction.configure(text=self.Blue.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
 
-        self.Time = datetime.datetime.now()
-        self.Clock = tk.Label(self, text=GetDateTime().getDate(), fg='white', bg='black',
+        self.Clock = tk.Label(self, text=time.strftime("%A, %B %d | %I:%M %p"), fg='white', bg='black',
                               font=("Helvetica", 15))
         self.Clock.pack(side='bottom')
 
@@ -112,49 +111,9 @@ class StartPage(tk.Frame):
         self.GreenPrediction.configure(text=self.Green.getPrediction())
         self.BrownPrediction.configure(text=self.Brown.getPrediction())
         self.BluePrediction.configure(text=self.Blue.getPrediction())
-        self.Time = datetime.datetime.now()
-        self.Clock.configure(text=GetDateTime().getDate())
+        self.Clock.configure(text=time.strftime("%A, %B %d | %I:%M %p"))
 
         self.CardinalPrediction.after(5000, self.update_label)
-
-class GetDateTime():
-    def __init__(self):
-        self.date = datetime.datetime.today()
-        self.hours = self.date.hour % 13
-        if(self.date.hour > 12): self.ampm = "pm"
-        else: self.ampm = "am"
-
-    def getDate(self):
-        return "{} {} {} {} | {}:{} {}".format(self.getDay(self.date.day), self.getMonth(self.date.month), self.date.day, self.date.year, self.hours, self.date.minute, self.ampm)
-
-
-    def getMonth(self, month):
-        switcher = {
-            1: "Janurary",
-            2: "Febuary",
-            3: "March",
-            4: "April",
-            5: "May",
-            6: "June",
-            7: "July",
-            8: "August",
-            9: "September",
-            10: "October",
-            11: "November",
-            12: "December"
-        }
-        return switcher.get(month)
-    def getDay(self, day):
-        switcher = {
-            0: "Monday",
-            1: "Tuesday",
-            2: "Wednesday",
-            3: "Thursday",
-            4: "Friday",
-            5: "Saturday",
-            6: "Sunday"
-        }
-        return switcher.get(day)
 
 class PageOne(tk.Frame):
 
