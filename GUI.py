@@ -5,6 +5,7 @@ import time
 import weather
 import IsRoomMateHome as home
 import GoogleCalendar as calendar
+from tkinter import Canvas
 
 
 class SampleApp(tk.Tk):
@@ -50,6 +51,8 @@ class SampleApp(tk.Tk):
             self.currFrame = 0
 
     def start(self):
+        if time.strftime("%H%M") == "0000":
+            self.destroy()
         self.show_frame()
         self.id = self.after(10000, self.start)
 
@@ -167,19 +170,27 @@ class PageTwo(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         label = tk.Label(self, text="Roommates:", fg='white', bg='black', font=("Helvetica", 50))
-        label.pack(side="top", fill="x", pady=25)
+        label.grid(row=0, column=2, pady=25)
 
         self.kyleLabel = tk.Label(self)
         self.kyleLabel.configure(text=home.check_if_home('Kyle'), fg='white', bg='black', font=("Helvetica", 25))
-        self.kyleLabel.pack(pady=10)
+        self.kyleLabel.grid(row=1, column=0, sticky='N')
+
+        self.line1 = Canvas(self)
+        self.line1.grid(row=1, column=1, padx=15, rowspan=100)
+        self.line1.config(bg='black', width=1, height=775)
 
         self.samLabel = tk.Label(self)
         self.samLabel.configure(text=home.check_if_home('Sam'), fg='white', bg='black', font=("Helvetica", 25))
-        self.samLabel.pack(pady=10)
+        self.samLabel.grid(row=1, column=2, sticky='N')
+
+        self.line2 = Canvas(self)
+        self.line2.grid(row=1, column=3, padx=15, rowspan=100)
+        self.line2.config(bg='black', width=1, height=775)
 
         self.seanLabel = tk.Label(self)
         self.seanLabel.configure(text=home.check_if_home('Sean'), fg='white', bg='black', font=("Helvetica", 25))
-        self.seanLabel.pack(pady=10)
+        self.seanLabel.grid(row=1, column=4, sticky='N')
 
         self.update_home()
 
