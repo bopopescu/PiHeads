@@ -6,6 +6,7 @@ import weather
 import IsRoomMateHome as home
 import GoogleCalendar as calendar
 from tkinter import Canvas
+from tkinter import ttk
 
 
 class SampleApp(tk.Tk):
@@ -54,7 +55,7 @@ class SampleApp(tk.Tk):
         if time.strftime("%H%M") == "0000":
             self.destroy()
         self.show_frame()
-        self.id = self.after(10000, self.start)
+        self.id = self.after(5000, self.start)
 
 
 class StartPage(tk.Frame):
@@ -125,43 +126,83 @@ class PageOne(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
+        colSize = 120
         self.w = weather.Weather()
         self.tempLabel = tk.Label(self)
-        self.tempLabel.grid(row=4, column=1, columnspan=2, ipadx='400')
-        self.tempLabel.configure(text=self.w.temp, fg='white', bg='black', font=("Helvetica", 50))
+        self.tempLabel.grid(row=0, column=1, sticky="WS")
+        self.tempLabel.configure(text=self.w.temp, fg='white', bg='black', font=("Helvetica", 120))
 
         self.conditionLabel = tk.Label(self)
-        self.conditionLabel.grid(row=2, column=1, columnspan=2)
+        self.conditionLabel.grid(row=1, column=0)
         self.conditionLabel.configure(text=self.w.condition, fg='white', bg='black', font=("Helvetica", 50))
 
         self.conditionImage = tk.PhotoImage(file=self.w.conditionFile)
         self.conditionImageLabel = tk.Label(self)
-        self.conditionImageLabel.grid(row=3, column=1, columnspan=2)
+        self.conditionImageLabel.grid(row=0, column=0)
         self.conditionImageLabel.configure(image=self.conditionImage, bg='black')
+
+        self.windLabel = tk.Label(self)
+        self.windLabel.grid(row=1, column=1, sticky="W")
+        self.windLabel.configure(text=self.w.wind, fg='white', bg='black', font=("Helvetica", 50))
+
 
         # Sunrise / Sunset
         self.sunriseLabel = tk.Label(self)
-        self.sunriseLabel.grid(row=7, column=0, sticky='W')
+        self.sunriseLabel.grid(row=1, column=2, sticky="N")
         self.sunriseLabel.configure(text=self.w.sunrise(), fg='white', bg='black', font=("Helvetica", 50))
-        self.sunriseLabel1 = tk.Label(self)
-        self.sunriseLabel1.grid(row=6, column=0, sticky='W')
-        self.sunriseLabel1.configure(text="Sunrise: ", fg='white', bg='black', font=("Helvetica", 50))
 
         self.sunsetLabel = tk.Label(self)
-        self.sunsetLabel.grid(row=7, column=3, sticky='E')
+        self.sunsetLabel.grid(row=1, column=3, sticky="N")
         self.sunsetLabel.configure(text=self.w.sunset(), fg='white', bg='black', font=("Helvetica", 50))
-        self.sunsetLabel1 = tk.Label(self)
-        self.sunsetLabel1.grid(row=6, column=3, sticky='E')
-        self.sunsetLabel1.configure(text="Sunset: ", fg='white', bg='black', font=("Helvetica", 50))
 
         # High / Low
         self.highLabel = tk.Label(self)
-        self.highLabel.grid(row=5, column=1)
-        self.highLabel.configure(text=self.w.high, fg='white', bg='black', font=("Helvetica", 50))
+        self.highLabel.grid(row=0, column=2)
+        self.highLabel.configure(text=self.w.high, fg='white', bg='black', font=("Helvetica", 80))
 
         self.lowLabel = tk.Label(self)
-        self.lowLabel.grid(row=5, column=2)
-        self.lowLabel.configure(text=self.w.low, fg='white', bg='black', font=("Helvetica", 50))
+        self.lowLabel.grid(row=0, column=3)
+        self.lowLabel.configure(text=self.w.low, fg='white', bg='black', font=("Helvetica", 80))
+
+        # Line
+        self.line = Canvas(self)
+        self.line.grid(row=8, column=0, columnspan=100, pady=100)
+        self.line.config(bg='white', width=tk.Frame.winfo_screenwidth(self), height=2)
+
+        # Forecast
+        self.f = weather.Forecast()
+        days = self.f.getForecast()
+        day1 = "{}\n{}\n{}".format(days['day1']['name'], days['day1']['high'], days['day1']['low'], days['day1']['description'])
+        day2 = "{}\n{}\n{}".format(days['day2']['name'], days['day2']['high'], days['day2']['low'], days['day2']['description'])
+        day3 = "{}\n{}\n{}".format(days['day3']['name'], days['day3']['high'], days['day3']['low'], days['day3']['description'])
+        day4 = "{}\n{}\n{}".format(days['day4']['name'], days['day4']['high'], days['day4']['low'], days['day4']['description'])
+
+        self.d1Image = tk.PhotoImage(file=self.w.displayConditions(days['day1']['description']))
+        self.d1ImageLabel = tk.Label(self)
+        self.d1ImageLabel.grid(row=9, column=0)
+        self.d1ImageLabel.configure(image=self.d1Image, bg='black')
+        self.d2Image = tk.PhotoImage(file=self.w.displayConditions(days['day2']['description']))
+        self.d2ImageLabel = tk.Label(self)
+        self.d2ImageLabel.grid(row=9, column=1)
+        self.d2ImageLabel.configure(image=self.d1Image, bg='black')
+        self.d3Image = tk.PhotoImage(file=self.w.displayConditions(days['day3']['description']))
+        self.d3ImageLabel = tk.Label(self)
+        self.d3ImageLabel.grid(row=9, column=2)
+        self.d3ImageLabel.configure(image=self.d1Image, bg='black')
+        self.d4Image = tk.PhotoImage(file=self.w.displayConditions(days['day4']['description']))
+        self.d4ImageLabel = tk.Label(self)
+        self.d4ImageLabel.grid(row=9, column=3)
+        self.d4ImageLabel.configure(image=self.d1Image, bg='black')
+
+        self.day1Label = tk.Label(self, text=day1, fg='white', bg='black', font=("Helvetica", 50))
+        self.day2Label = tk.Label(self, text=day2, fg='white', bg='black', font=("Helvetica", 50))
+        self.day3Label = tk.Label(self, text=day3, fg='white', bg='black', font=("Helvetica", 50))
+        self.day4Label = tk.Label(self, text=day4, fg='white', bg='black', font=("Helvetica", 50))
+
+        self.day1Label.grid(row=10, column=0, padx=colSize, pady=50)
+        self.day2Label.grid(row=10, column=1, padx=colSize, pady=50)
+        self.day3Label.grid(row=10, column=2, padx=colSize, pady=50)
+        self.day4Label.grid(row=10, column=3, padx=colSize, pady=50)
 
 
 class PageTwo(tk.Frame):
@@ -196,18 +237,18 @@ class PageTwo(tk.Frame):
 
         ##Calendars
         label2 = tk.Label(self, text="Calendars:", fg='white', bg='black', font=("Helvetica", 50))
-        label2.pack(side="top", fill="x", pady=25)
+        label2.grid(row=2, column=2)
         self.kyleCal = tk.Label(self)
         self.kyleCal.configure(text=calendar.Get_Google_Calendar('Kyle'), fg='white', bg='black', font=("Helvetica", 25))
-        self.kyleCal.pack(pady=5)
+        self.kyleCal.grid(row=3, column=0)
 
         self.samCal = tk.Label(self)
         self.samCal.configure(text=calendar.Get_Google_Calendar('Sam'), fg='white', bg='black',font=("Helvetica", 25))
-        self.samCal.pack(pady=5)
+        self.samCal.grid(row=3, column=2)
 
         self.seanCal = tk.Label(self)
         self.seanCal.configure(text=calendar.Get_Google_Calendar('Sean'), fg='white', bg='black',font=("Helvetica", 25))
-        self.seanCal.pack(pady=5)
+        self.seanCal.grid(row=3, column=4)
 
         self.update_cal()
 

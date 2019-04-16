@@ -13,28 +13,28 @@ class Weather:
         self.main = self.weatherData['main']
         self.conditions = self.weatherData['weather']
 
-        self.temp = "{} °F".format(round(self.main['temp']))
-        self.high = "{} °F".format(round(self.main['temp_max']))
-        self.low = "{} °F".format(round(self.main['temp_min']))
+        self.temp = "{}°".format(round(self.main['temp']))
+        self.high = "{}°".format(round(self.main['temp_max']))
+        self.low = "{}°".format(round(self.main['temp_min']))
         self.condition = self.conditions[0]['main']
-        self.conditionFile = self.displayConditions()
+        self.conditionFile = self.displayConditions(self.condition)
         self.wind = "{} {} mph".format(self.windDirection(), self.windSpeed())
         self.description = self.conditions[0]['description']
         self.humidity = "{}%".format(self.main['humidity'])
         self.visibility = self.visibility()
 
-    def displayConditions(self):
-        if self.condition == "Clouds":
+    def displayConditions(self, s):
+        if s == "Clouds":
             return "clouds.gif"
-        elif self.condition == "Clear":
+        elif s == "Clear":
             return "sunny.gif"
-        elif self.condition == "Rain" or self.condition == "Drizzle" or self.condition == "Mist":
+        elif s == "Rain" or s == "Drizzle" or s == "Mist":
             return "rain.gif"
-        elif self.condition == "Thunderstorm":
+        elif s == "Thunderstorm":
             return "thunder.gif"
-        elif self.condition == "Snow":
+        elif s == "Snow":
             return "snow.gif"
-        elif self.condition == "Fog":
+        elif s == "Fog":
             return "fog.gif"
         # add other weather conditions
 
@@ -67,6 +67,7 @@ class Weather:
         else:
             return "N"
 
+
     def visibility(self):
         v = self.weatherData['visibility'] * 0.000621371
         if v < 1:
@@ -74,6 +75,7 @@ class Weather:
         else:
             v = round(v)
         return "{} mi".format(v)
+
 
 class Forecast:
     def __init__(self):
