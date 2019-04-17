@@ -14,7 +14,7 @@ def check_if_home(name):
     samResponse.raise_for_status()
     kyleResponse = requests.get(kyleUrl)
     kyleResponse.raise_for_status()
-    
+
     # Load JSON data into a Python variable
     seanData = json.loads(seanResponse.text)
     samData = json.loads(seanResponse.text)
