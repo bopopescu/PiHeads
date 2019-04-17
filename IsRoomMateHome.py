@@ -1,13 +1,15 @@
 import requests, json
 
 def check_if_home(name):
-    AIO_KEY = 'aee1d554ecbd4ae28425eb62004f1c24'
+    SEAN_AIO_KEY = 'aee1d554ecbd4ae28425eb62004f1c24'
     username = 'smcf7'
     group = 'piheads-smart-display'
-    url = 'https://io.adafruit.com/api/v2/{}/groups/{}?X-AIO-Key={}'.format(username, group, AIO_KEY)
+    seanUrl = 'https://io.adafruit.com/api/v2/{}/groups/{}?X-AIO-Key={}'.format(username, group, SEAN_AIO_KEY)
 
-    response = requests.get(url)
-    response.raise_for_status()
+
+
+    seanResponse = requests.get(seanUrl)
+    seanResponse.raise_for_status()
 
     # Load JSON data into a Python variable
     data = json.loads(response.text)
