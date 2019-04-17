@@ -204,10 +204,34 @@ class PageOne(tk.Frame):
         self.day3Label.grid(row=10, column=2, padx=colSize, pady=25)
         self.day4Label.grid(row=10, column=3, padx=colSize, pady=25)
 
-        # CLock
+        # Clock
         self.Clock = tk.Label(self, text=time.strftime("%A, %B %d | %I:%M %p"), fg='white', bg='black',
                               font=("Helvetica", 15))
         self.Clock.grid(row=11, column=1, columnspan=2, pady=19)
+        self.update_weather()
+
+    def update_weather(self):
+        self.w = weather.Weather()
+        self.tempLabel.configure(text=self.w.temp)
+        self.conditionLabel.configure(text=self.w.condition)
+        self.conditionImageLabel.configure(image=self.conditionImage)
+        self.windLabel.configure(text=self.w.wind)
+        self.highLabel.configure(text=self.w.high)
+        self.lowLabel.configure(text=self.w.low)
+
+        # Forecast
+        self.f = weather.Forecast()
+        days = self.f.getForecast()
+        self.d1Image = tk.PhotoImage(file=self.w.displayConditions(days['day1']['description']))
+        self.d1ImageLabel.configure(image=self.d1Image, bg='black')
+        self.d2Image = tk.PhotoImage(file=self.w.displayConditions(days['day2']['description']))
+        self.d2ImageLabel.configure(image=self.d1Image, bg='black')
+        self.d3Image = tk.PhotoImage(file=self.w.displayConditions(days['day3']['description']))
+        self.d3ImageLabel.configure(image=self.d1Image, bg='black')
+        self.d4Image = tk.PhotoImage(file=self.w.displayConditions(days['day4']['description']))
+        self.d4ImageLabel.configure(image=self.d1Image, bg='black')
+
+        self.tempLabel.after(1800000, self.update_weather())
 
 
 class PageTwo(tk.Frame):
@@ -261,7 +285,7 @@ class PageTwo(tk.Frame):
         self.kyleLabel.configure(text=home.check_if_home('Kyle'))
         self.samLabel.configure(text=home.check_if_home('Sam'))
         self.seanLabel.configure(text=home.check_if_home('Sean'))
-        self.kyleLabel.after(5000, self.update_home)
+        self.kyleLabel.after(180000, self.update_home)
 
     def update_cal(self):
         self.kyleCal.configure(text=calendar.Get_Google_Calendar("Kyle"))

@@ -17,12 +17,12 @@ def check_if_home(name):
 
     # Load JSON data into a Python variable
     seanData = json.loads(seanResponse.text)
-    samData = json.loads(seanResponse.text)
-    kyleData = json.loads(seanResponse.text)
+    samData = json.loads(samResponse.text)
+    kyleData = json.loads(kyleResponse.text)
 
     if name is 'Kyle':
-        return "{}: {}".format(kyleData['feeds'][0]['name'], kyleData['feeds'][0]['last_value'])
+        return "Kyle: {}".format(kyleData['last_value'])
     if name is 'Sam':
-        return "{}: {}".format(samData['feeds'][1]['name'], samData['feeds'][1]['last_value'])
+        return "Sam: {}".format(samData['last_value'])
     if name is 'Sean':
-        return "{}: {}".format(seanData['feeds'][2]['name'], seanData['feeds'][2]['last_value'])
+        return "Sean: {}".format(seanData['feeds'][2]['last_value'])
