@@ -231,7 +231,7 @@ class PageOne(tk.Frame):
         self.d4Image = tk.PhotoImage(file=self.w.displayConditions(days['day4']['description']))
         self.d4ImageLabel.configure(image=self.d1Image, bg='black')
 
-        self.tempLabel.after(1800000, self.update_weather())
+        #self.tempLabel.after(1800000, self.update_weather())
 
 
 class PageTwo(tk.Frame):
