@@ -44,7 +44,7 @@ def Get_Google_Calendar(name):
         now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
         ##print('Getting the upcoming 5 events')
         events_result = service.events().list(calendarId='primary', timeMin=now,
-                                            maxResults=3, singleEvents=True,
+                                            maxResults=5, singleEvents=True,
                                             orderBy='startTime').execute()
         events = events_result.get('items', [])
 
@@ -85,7 +85,7 @@ def Get_Google_Calendar(name):
         now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
         ##print('Getting the upcoming 5 events')
         events_result = service.events().list(calendarId='primary', timeMin=now,
-                                              maxResults=3, singleEvents=True,
+                                              maxResults=5, singleEvents=True,
                                               orderBy='startTime').execute()
         events = events_result.get('items', [])
 
@@ -124,7 +124,7 @@ def Get_Google_Calendar(name):
         now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
         ##print('Getting the upcoming 5 events')
         events_result = service.events().list(calendarId='primary', timeMin=now,
-                                              maxResults=3, singleEvents=True,
+                                              maxResults=5, singleEvents=True,
                                               orderBy='startTime').execute()
         events = events_result.get('items', [])
 
