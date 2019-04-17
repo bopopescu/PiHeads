@@ -93,7 +93,8 @@ def Get_Google_Calendar(name):
             seanEvents += 'No upcoming events found.\n'
         for event in events:
             start = event['start'].get('dateTime', event['start'].get('date'))
-            seanEvents += (start + " " + event['summary']+"\n")
+            end = event['end'].get('dateTime', event['start'].get('date'))
+            seanEvents += (start + " " + event['summary']+ end + "\n")
         return seanEvents
     ##Sam
     if name is "Sam":
