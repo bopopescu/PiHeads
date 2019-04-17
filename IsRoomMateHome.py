@@ -12,7 +12,7 @@ def check_if_home(name):
     seanResponse.raise_for_status()
 
     # Load JSON data into a Python variable
-    data = json.loads(response.text)
+    data = json.loads(seanResponse.text)
 
     if name is 'Kyle':
         return "{}: {}".format(data['feeds'][0]['name'], data['feeds'][0]['last_value'])
