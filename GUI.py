@@ -126,7 +126,7 @@ class PageOne(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        colSize = 120
+        colSize = 135
         self.w = weather.Weather()
         self.tempLabel = tk.Label(self)
         self.tempLabel.grid(row=0, column=1, sticky="WS")
@@ -166,7 +166,7 @@ class PageOne(tk.Frame):
 
         # Line
         self.line = Canvas(self)
-        self.line.grid(row=8, column=0, columnspan=100, pady=100)
+        self.line.grid(row=8, column=0, columnspan=100, pady=50)
         self.line.config(bg='white', width=tk.Frame.winfo_screenwidth(self), height=2)
 
         # Forecast
@@ -199,10 +199,15 @@ class PageOne(tk.Frame):
         self.day3Label = tk.Label(self, text=day3, fg='white', bg='black', font=("Helvetica", 50))
         self.day4Label = tk.Label(self, text=day4, fg='white', bg='black', font=("Helvetica", 50))
 
-        self.day1Label.grid(row=10, column=0, padx=colSize, pady=50)
-        self.day2Label.grid(row=10, column=1, padx=colSize, pady=50)
-        self.day3Label.grid(row=10, column=2, padx=colSize, pady=50)
-        self.day4Label.grid(row=10, column=3, padx=colSize, pady=50)
+        self.day1Label.grid(row=10, column=0, padx=colSize, pady=25)
+        self.day2Label.grid(row=10, column=1, padx=colSize, pady=25)
+        self.day3Label.grid(row=10, column=2, padx=colSize, pady=25)
+        self.day4Label.grid(row=10, column=3, padx=colSize, pady=25)
+
+        # CLock
+        self.Clock = tk.Label(self, text=time.strftime("%A, %B %d | %I:%M %p"), fg='white', bg='black',
+                              font=("Helvetica", 15))
+        self.Clock.grid(row=11, column=1, columnspan=2, pady=19)
 
 
 class PageTwo(tk.Frame):
