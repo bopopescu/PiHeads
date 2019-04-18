@@ -126,7 +126,7 @@ class PageOne(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        colSize = 135
+        colSize = 120
         self.w = weather.Weather()
         self.tempLabel = tk.Label(self)
         self.tempLabel.grid(row=0, column=1, sticky="WS")
