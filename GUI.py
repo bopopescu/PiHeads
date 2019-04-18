@@ -34,6 +34,8 @@ class SampleApp(tk.Tk):
             # will be the one that is visible.
             frame.grid(row=0, column=0, sticky="nsew")
         self.currFrame = 3
+        self.weatherCount = 0
+        self.roommateCheckCount = 0
         self.id = self.after(1000, self.start)
 
     def show_frame(self):
@@ -55,6 +57,18 @@ class SampleApp(tk.Tk):
         if time.strftime("%H%M") == "0000":
             self.destroy()
         self.show_frame()
+        StartPage.update_label(self.frames["StartPage"])
+        if self.roommateCheckCount == 3:
+            PageTwo.update_home(self.frames["PageTwo"])
+            self.roommateCheckCount = 0
+        else:
+            self.roommateCheckCount += 1
+        if self.weatherCount == 360:
+            PageOne.update_weather(self.frames["PageOne"])
+            PageTwo.update_cal(self.frames["PageTwo"])
+            self.weatherCount = 0
+        else:
+            self.weatherCount += 1
         self.id = self.after(5000, self.start)
 
 
@@ -107,9 +121,6 @@ class StartPage(tk.Frame):
                               font=("Helvetica", 15))
         self.Clock.pack(side='bottom')
 
-        self.count = 0
-        self.update_label()
-
     def update_label(self):
         self.CardinalPrediction.configure(text=self.Cardinal.getPrediction())
         self.GoldPrediction.configure(text=self.Gold.getPrediction())
@@ -117,9 +128,6 @@ class StartPage(tk.Frame):
         self.BrownPrediction.configure(text=self.Brown.getPrediction())
         self.BluePrediction.configure(text=self.Blue.getPrediction())
         self.Clock.configure(text=time.strftime("%A, %B %d | %I:%M %p"))
-
-        self.CardinalPrediction.after(5000, self.update_label)
-
 
 class PageOne(tk.Frame):
 
@@ -209,7 +217,6 @@ class PageOne(tk.Frame):
         self.Clock = tk.Label(self, text=time.strftime("%A, %B %d | %I:%M %p"), fg='white', bg='black',
                               font=("Helvetica", 15))
         self.Clock.grid(row=11, column=1, columnspan=2, pady=19)
-        self.update_weather()
 
     def update_weather(self):
         self.w = weather.Weather()
@@ -231,9 +238,6 @@ class PageOne(tk.Frame):
         self.d3ImageLabel.configure(image=self.d1Image, bg='black')
         self.d4Image = tk.PhotoImage(file=self.w.displayConditions(days['day4']['description']))
         self.d4ImageLabel.configure(image=self.d1Image, bg='black')
-
-        # self.tempLabel.after(1800000, self.update_weather())
-
 
 class PageTwo(tk.Frame):
 
@@ -263,8 +267,6 @@ class PageTwo(tk.Frame):
         self.seanLabel.configure(text=home.check_if_home('Sean'), fg='white', bg='black', font=("Helvetica", 25))
         self.seanLabel.grid(row=1, column=4, sticky='N')
 
-        self.update_home()
-
         ##Calendars
         label2 = tk.Label(self, text="Calendars:", fg='white', bg='black', font=("Helvetica", 50))
         label2.grid(row=2, column=2)
@@ -280,19 +282,15 @@ class PageTwo(tk.Frame):
         self.seanCal.configure(text=calendar.Get_Google_Calendar('Sean'), fg='white', bg='black',font=("Helvetica", 25))
         self.seanCal.grid(row=3, column=4)
 
-        self.update_cal()
-
     def update_home(self):
         self.kyleLabel.configure(text=home.check_if_home('Kyle'))
         self.samLabel.configure(text=home.check_if_home('Sam'))
         self.seanLabel.configure(text=home.check_if_home('Sean'))
-        self.kyleLabel.after(180000, self.update_home)
 
     def update_cal(self):
         self.kyleCal.configure(text=calendar.Get_Google_Calendar("Kyle"))
         self.samCal.configure(text=calendar.Get_Google_Calendar("Sam"))
         self.seanCal.configure(text=calendar.Get_Google_Calendar("Sean"))
-        self.kyleCal.after(10000, self.update_cal)
 
 if __name__ == "__main__":
     app = SampleApp()
