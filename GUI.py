@@ -33,10 +33,9 @@ class SampleApp(tk.Tk):
             # the one on the top of the stacking order
             # will be the one that is visible.
             frame.grid(row=0, column=0, sticky="nsew")
-        self.currFrame = 3
-        self.weatherCount = 0
-        self.roommateCheckCount = 0
-        self.id = self.after(1000, self.start)
+        self.currFrame = 2
+        self.weatherCount = 360
+        self.start()
 
     def show_frame(self):
         '''Show a frame for the given page name'''
@@ -45,10 +44,12 @@ class SampleApp(tk.Tk):
             frame.tkraise()
             self.currFrame = 1
         elif self.currFrame == 1:
+            PageTwo.update_home(self.frames["PageTwo"])
             frame = self.frames["PageTwo"]
             frame.tkraise()
             self.currFrame = 2
         else:
+            StartPage.update_label(self.frames["StartPage"])
             frame = self.frames["StartPage"]
             frame.tkraise()
             self.currFrame = 0
@@ -56,19 +57,13 @@ class SampleApp(tk.Tk):
     def start(self):
         if time.strftime("%H%M") == "0000":
             self.destroy()
-        self.show_frame()
-        StartPage.update_label(self.frames["StartPage"])
-        if self.roommateCheckCount == 3:
-            PageTwo.update_home(self.frames["PageTwo"])
-            self.roommateCheckCount = 0
-        else:
-            self.roommateCheckCount += 1
         if self.weatherCount == 360:
             PageOne.update_weather(self.frames["PageOne"])
             PageTwo.update_cal(self.frames["PageTwo"])
             self.weatherCount = 0
         else:
             self.weatherCount += 1
+        self.show_frame()
         self.id = self.after(5000, self.start)
 
 
