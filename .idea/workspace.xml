@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51eb4bee-4548-476c-8da0-1ccbeb93fb07" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/token.sam" beforeDir="false" />
+    <list default="true" id="51eb4bee-4548-476c-8da0-1ccbeb93fb07" name="Default Changelist" comment="Merge branch 'master' of https://github.com/Salavin/PiHeads&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;token.kyle&#10;#&#9;token.sam&#10;#&#9;token.sean">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GoogleCalendar.py" beforeDir="false" afterPath="$PROJECT_DIR$/GoogleCalendar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/token.kyle" beforeDir="false" afterPath="$PROJECT_DIR$/token.kyle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/token.sean" beforeDir="false" afterPath="$PROJECT_DIR$/token.sean" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +30,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3060">
+            <state relative-caret-position="145">
               <caret line="246" column="42" selection-start-line="246" selection-start-column="42" selection-end-line="246" selection-end-column="42" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -38,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/GoogleCalendar.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2465">
-              <caret line="145" column="46" selection-start-line="145" selection-start-column="46" selection-end-line="145" selection-end-column="46" />
+              <caret line="145" column="40" selection-start-line="145" selection-start-column="40" selection-end-line="145" selection-end-column="40" />
               <folding>
                 <element signature="e#1#38#0" expanded="true" />
               </folding>
@@ -344,6 +349,7 @@
       <workItem from="1555613598205" duration="678000" />
       <workItem from="1555614377216" duration="1062000" />
       <workItem from="1555618354438" duration="642000" />
+      <workItem from="1555622107248" duration="252000" />
     </task>
     <task id="LOCAL-00001" summary="Yes">
       <created>1551906364839</created>
@@ -506,22 +512,29 @@
       <option name="project" value="LOCAL" />
       <updated>1555617845609</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Added new token for Sam">
+      <created>1555622264806</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1555622264806</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61858000" />
+    <option name="totallyTimeSpent" value="62110000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1455" height="935" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1577061" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15985663" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49318996" visible="true" weight="0.22914073" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3994452" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49318996" visible="true" weight="0.22914073" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3985056" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -626,7 +639,8 @@
     <MESSAGE value="Added Calendar Functionality to GUI" />
     <MESSAGE value="Added Adafruit" />
     <MESSAGE value="Removed Format Calendar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed Format Calendar" />
+    <MESSAGE value="Added new token for Sam" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new token for Sam" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PiHeads$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1555617718601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -679,7 +693,7 @@
     <entry file="file://$PROJECT_DIR$/FormatCalendar.py" />
     <entry file="file://$PROJECT_DIR$/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3060">
+        <state relative-caret-position="145">
           <caret line="246" column="42" selection-start-line="246" selection-start-column="42" selection-end-line="246" selection-end-column="42" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
@@ -690,7 +704,7 @@
     <entry file="file://$PROJECT_DIR$/GoogleCalendar.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2465">
-          <caret line="145" column="46" selection-start-line="145" selection-start-column="46" selection-end-line="145" selection-end-column="46" />
+          <caret line="145" column="40" selection-start-line="145" selection-start-column="40" selection-end-line="145" selection-end-column="40" />
           <folding>
             <element signature="e#1#38#0" expanded="true" />
           </folding>

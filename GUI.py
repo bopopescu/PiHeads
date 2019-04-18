@@ -55,8 +55,6 @@ class SampleApp(tk.Tk):
             self.currFrame = 0
 
     def start(self):
-        if time.strftime("%H%M") == "0000":
-            self.destroy()
         if self.weatherCount == 360:
             PageOne.update_weather(self.frames["PageOne"])
             PageTwo.update_cal(self.frames["PageTwo"])
@@ -79,20 +77,19 @@ class StartPage(tk.Frame):
         self.Brown = cyride.Predictions(862)
         self.Blue = cyride.Predictions(830)
 
-        self.Label = tk.Label(self, text="CyRide Predictions at Coover Hall:", fg='white', bg='black',
-                              font=("Helvetica", 50))
+        self.Label = tk.Label(self, text="CyRide Predictions at Coover Hall:", fg='white', bg='black',font=("Helvetica", 50))
         self.Label.pack(pady=25)
 
         self.CardinalPrediction = tk.Label(self)
-        self.CardinalLabel = tk.Label(self, text="21 Cardinal:", fg='Red', bg='black', font=("Helvetica", 25))
+        self.CardinalLabel = tk.Label(self, text=" 21 Cardinal:", fg='Red', bg='black', font=("Helvetica", 40))
         self.GoldPrediction = tk.Label(self)
-        self.GoldLabel = tk.Label(self, text="25 Gold:", fg='Yellow', bg='black', font=("Helvetica", 25))
+        self.GoldLabel = tk.Label(self, text="\n25 Gold:", fg='Yellow', bg='black', font=("Helvetica", 40))
         self.GreenPrediction = tk.Label(self)
-        self.GreenLabel = tk.Label(self, text="2 Green:", fg='Green', bg='black', font=("Helvetica", 25))
+        self.GreenLabel = tk.Label(self, text="\n2 Green:", fg='Green', bg='black', font=("Helvetica", 40))
         self.BrownPrediction = tk.Label(self)
-        self.BrownLabel = tk.Label(self, text="6 Brown:", fg='Brown', bg='black', font=("Helvetica", 25))
+        self.BrownLabel = tk.Label(self, text="\n6 Brown:", fg='Brown', bg='black', font=("Helvetica", 40))
         self.BluePrediction = tk.Label(self)
-        self.BlueLabel = tk.Label(self, text="3 Blue:", fg='Blue', bg='black', font=("Helvetica", 25))
+        self.BlueLabel = tk.Label(self, text="\n3 Blue:", fg='Blue', bg='black', font=("Helvetica",40))
 
         self.CardinalLabel.pack()
         self.CardinalPrediction.pack()
@@ -105,12 +102,11 @@ class StartPage(tk.Frame):
         self.BlueLabel.pack()
         self.BluePrediction.pack()
 
-        self.CardinalPrediction.configure(text=self.Cardinal.getPrediction(), fg='white', bg='black',
-                                          font=("Helvetica", 20))
-        self.GoldPrediction.configure(text=self.Gold.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
-        self.GreenPrediction.configure(text=self.Green.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
-        self.BrownPrediction.configure(text=self.Brown.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
-        self.BluePrediction.configure(text=self.Blue.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
+        self.CardinalPrediction.configure(text=self.Cardinal.getPrediction(), fg='white', bg='black', font=("Helvetica", 35))
+        self.GoldPrediction.configure(text=self.Gold.getPrediction(), fg='white', bg='black', font=("Helvetica", 35))
+        self.GreenPrediction.configure(text=self.Green.getPrediction(), fg='white', bg='black', font=("Helvetica", 35))
+        self.BrownPrediction.configure(text=self.Brown.getPrediction(), fg='white', bg='black', font=("Helvetica", 35))
+        self.BluePrediction.configure(text=self.Blue.getPrediction(), fg='white', bg='black', font=("Helvetica", 35))
 
         self.Clock = tk.Label(self, text=time.strftime("%A, %B %d | %I:%M %p"), fg='white', bg='black',
                               font=("Helvetica", 15))
@@ -153,20 +149,20 @@ class PageOne(tk.Frame):
         # Sunrise / Sunset
         self.sunriseLabel = tk.Label(self)
         self.sunriseLabel.grid(row=1, column=2, sticky="N")
-        self.sunriseLabel.configure(text=self.w.sunrise(), fg='white', bg='black', font=("Helvetica", 50))
+        self.sunriseLabel.configure(text="Rise:\n{}".format(self.w.sunrise()), fg='white', bg='black', font=("Helvetica", 50))
 
         self.sunsetLabel = tk.Label(self)
         self.sunsetLabel.grid(row=1, column=3, sticky="N")
-        self.sunsetLabel.configure(text=self.w.sunset(), fg='white', bg='black', font=("Helvetica", 50))
+        self.sunsetLabel.configure(text="Set:\n{}".format(self.w.sunset()), fg='white', bg='black', font=("Helvetica", 50))
 
         # High / Low
         self.highLabel = tk.Label(self)
         self.highLabel.grid(row=0, column=2)
-        self.highLabel.configure(text=self.w.high, fg='white', bg='black', font=("Helvetica", 80))
+        self.highLabel.configure(text="High:\n{}".format(self.w.high), fg='white', bg='black', font=("Helvetica", 80))
 
         self.lowLabel = tk.Label(self)
         self.lowLabel.grid(row=0, column=3)
-        self.lowLabel.configure(text=self.w.low, fg='white', bg='black', font=("Helvetica", 80))
+        self.lowLabel.configure(text="Low:\n{}".format(self.w.low), fg='white', bg='black', font=("Helvetica", 80))
 
         # Line
         self.line = Canvas(self)
@@ -176,10 +172,10 @@ class PageOne(tk.Frame):
         # Forecast
         self.f = weather.Forecast()
         days = self.f.getForecast()
-        day1 = "{}\n{}\n{}".format(days['day1']['name'], days['day1']['high'], days['day1']['low'], days['day1']['description'])
-        day2 = "{}\n{}\n{}".format(days['day2']['name'], days['day2']['high'], days['day2']['low'], days['day2']['description'])
-        day3 = "{}\n{}\n{}".format(days['day3']['name'], days['day3']['high'], days['day3']['low'], days['day3']['description'])
-        day4 = "{}\n{}\n{}".format(days['day4']['name'], days['day4']['high'], days['day4']['low'], days['day4']['description'])
+        day1 = "{}\nH: {}\nL: {}".format(days['day1']['name'], days['day1']['high'], days['day1']['low'], days['day1']['description'])
+        day2 = "{}\nH: {}\nL: {}".format(days['day2']['name'], days['day2']['high'], days['day2']['low'], days['day2']['description'])
+        day3 = "{}\nH: {}\nL: {}".format(days['day3']['name'], days['day3']['high'], days['day3']['low'], days['day3']['description'])
+        day4 = "{}\nH: {}\nL: {}".format(days['day4']['name'], days['day4']['high'], days['day4']['low'], days['day4']['description'])
 
         self.d1Image = tk.PhotoImage(file=self.w.displayConditions(days['day1']['description']))
         self.d1ImageLabel = tk.Label(self)
@@ -219,8 +215,8 @@ class PageOne(tk.Frame):
         self.conditionLabel.configure(text=self.w.condition)
         self.conditionImageLabel.configure(image=self.conditionImage)
         self.windLabel.configure(text=self.w.wind)
-        self.highLabel.configure(text=self.w.high)
-        self.lowLabel.configure(text=self.w.low)
+        self.highLabel.configure(text="Low:\n{}".format(self.w.high))
+        self.lowLabel.configure(text="High:\n{}".format(self.w.low))
 
         # Forecast
         self.f = weather.Forecast()
@@ -245,6 +241,7 @@ class PageTwo(tk.Frame):
         self.kyleLabel = tk.Label(self)
         self.kyleLabel.configure(text=home.check_if_home('Kyle'), fg='white', bg='black', font=("Helvetica", 25))
         self.kyleLabel.grid(row=1, column=0, sticky='N')
+        self.columnconfigure(0, minsize=450)
 
         self.line1 = Canvas(self)
         self.line1.grid(row=1, column=1, padx=15, rowspan=100)
@@ -253,6 +250,7 @@ class PageTwo(tk.Frame):
         self.samLabel = tk.Label(self)
         self.samLabel.configure(text=home.check_if_home('Sam'), fg='white', bg='black', font=("Helvetica", 25))
         self.samLabel.grid(row=1, column=2, sticky='N')
+        self.columnconfigure(2, minsize=450)
 
         self.line2 = Canvas(self)
         self.line2.grid(row=1, column=3, padx=15, rowspan=100)
@@ -261,7 +259,7 @@ class PageTwo(tk.Frame):
         self.seanLabel = tk.Label(self)
         self.seanLabel.configure(text=home.check_if_home('Sean'), fg='white', bg='black', font=("Helvetica", 25))
         self.seanLabel.grid(row=1, column=4, sticky='N')
-
+        self.columnconfigure(4, minsize=450)
         ##Calendars
         self.kyleCal = tk.Label(self)
         self.kyleCal.configure(text=calendar.Get_Google_Calendar('Kyle'), fg='white', bg='black', font=("Helvetica", 25))
