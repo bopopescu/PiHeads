@@ -79,20 +79,19 @@ class StartPage(tk.Frame):
         self.Brown = cyride.Predictions(862)
         self.Blue = cyride.Predictions(830)
 
-        self.Label = tk.Label(self, text="CyRide Predictions at Coover Hall:", fg='white', bg='black',
-                              font=("Helvetica", 50))
+        self.Label = tk.Label(self, text="CyRide Predictions at Coover Hall:", fg='white', bg='black',font=("Helvetica", 50))
         self.Label.pack(pady=25)
 
         self.CardinalPrediction = tk.Label(self)
-        self.CardinalLabel = tk.Label(self, text="21 Cardinal:", fg='Red', bg='black', font=("Helvetica", 25))
+        self.CardinalLabel = tk.Label(self, text=" 21 Cardinal:", fg='Red', bg='black', font=("Helvetica", 40))
         self.GoldPrediction = tk.Label(self)
-        self.GoldLabel = tk.Label(self, text="25 Gold:", fg='Yellow', bg='black', font=("Helvetica", 25))
+        self.GoldLabel = tk.Label(self, text="\n25 Gold:", fg='Yellow', bg='black', font=("Helvetica", 40))
         self.GreenPrediction = tk.Label(self)
-        self.GreenLabel = tk.Label(self, text="2 Green:", fg='Green', bg='black', font=("Helvetica", 25))
+        self.GreenLabel = tk.Label(self, text="\n2 Green:", fg='Green', bg='black', font=("Helvetica", 40))
         self.BrownPrediction = tk.Label(self)
-        self.BrownLabel = tk.Label(self, text="6 Brown:", fg='Brown', bg='black', font=("Helvetica", 25))
+        self.BrownLabel = tk.Label(self, text="\n6 Brown:", fg='Brown', bg='black', font=("Helvetica", 40))
         self.BluePrediction = tk.Label(self)
-        self.BlueLabel = tk.Label(self, text="3 Blue:", fg='Blue', bg='black', font=("Helvetica", 25))
+        self.BlueLabel = tk.Label(self, text="\n3 Blue:", fg='Blue', bg='black', font=("Helvetica",40))
 
         self.CardinalLabel.pack()
         self.CardinalPrediction.pack()
@@ -105,12 +104,11 @@ class StartPage(tk.Frame):
         self.BlueLabel.pack()
         self.BluePrediction.pack()
 
-        self.CardinalPrediction.configure(text=self.Cardinal.getPrediction(), fg='white', bg='black',
-                                          font=("Helvetica", 20))
-        self.GoldPrediction.configure(text=self.Gold.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
-        self.GreenPrediction.configure(text=self.Green.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
-        self.BrownPrediction.configure(text=self.Brown.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
-        self.BluePrediction.configure(text=self.Blue.getPrediction(), fg='white', bg='black', font=("Helvetica", 20))
+        self.CardinalPrediction.configure(text=self.Cardinal.getPrediction(), fg='white', bg='black', font=("Helvetica", 35))
+        self.GoldPrediction.configure(text=self.Gold.getPrediction(), fg='white', bg='black', font=("Helvetica", 35))
+        self.GreenPrediction.configure(text=self.Green.getPrediction(), fg='white', bg='black', font=("Helvetica", 35))
+        self.BrownPrediction.configure(text=self.Brown.getPrediction(), fg='white', bg='black', font=("Helvetica", 35))
+        self.BluePrediction.configure(text=self.Blue.getPrediction(), fg='white', bg='black', font=("Helvetica", 35))
 
         self.Clock = tk.Label(self, text=time.strftime("%A, %B %d | %I:%M %p"), fg='white', bg='black',
                               font=("Helvetica", 15))
@@ -245,15 +243,17 @@ class PageTwo(tk.Frame):
         self.kyleLabel = tk.Label(self)
         self.kyleLabel.configure(text=home.check_if_home('Kyle'), fg='white', bg='black', font=("Helvetica", 25))
         self.kyleLabel.grid(row=1, column=0, sticky='N')
-        self.columnconfigure(0, minsize=120)
+        self.columnconfigure(0, minsize=450)
+
         self.line1 = Canvas(self)
         self.line1.grid(row=1, column=1, padx=15, rowspan=100)
         self.line1.config(bg='black', width=1, height=775)
-        self.columnconfigure(1, minsize=120)
+
         self.samLabel = tk.Label(self)
         self.samLabel.configure(text=home.check_if_home('Sam'), fg='white', bg='black', font=("Helvetica", 25))
         self.samLabel.grid(row=1, column=2, sticky='N')
-        self.columnconfigure(2, minsize=120)
+        self.columnconfigure(2, minsize=450)
+
         self.line2 = Canvas(self)
         self.line2.grid(row=1, column=3, padx=15, rowspan=100)
         self.line2.config(bg='black', width=1, height=775)
@@ -261,7 +261,7 @@ class PageTwo(tk.Frame):
         self.seanLabel = tk.Label(self)
         self.seanLabel.configure(text=home.check_if_home('Sean'), fg='white', bg='black', font=("Helvetica", 25))
         self.seanLabel.grid(row=1, column=4, sticky='N')
-
+        self.columnconfigure(4, minsize=450)
         ##Calendars
         self.kyleCal = tk.Label(self)
         self.kyleCal.configure(text=calendar.Get_Google_Calendar('Kyle'), fg='white', bg='black', font=("Helvetica", 25))
