@@ -51,8 +51,9 @@ def Get_Google_Calendar(name):
         if not events:
             kyleEvents += 'No upcoming events found.\n'
         for event in events:
-            start = event['start'].get('dateTime', event['start'].get('date'))
-            kyleEvents += (start + " " + event['summary'] + "\n")
+            start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
+            end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
+            kyleEvents += (start + " - " + end + " | " + event['summary'] + "\n")
         return kyleEvents
 
 
@@ -92,9 +93,9 @@ def Get_Google_Calendar(name):
         if not events:
             seanEvents += 'No upcoming events found.\n'
         for event in events:
-            start = event['start'].get('dateTime', event['start'].get('date'))
-            end = event['end'].get('dateTime', event['start'].get('date'))
-            seanEvents += (start + " " + event['summary']+ end + "\n")
+            start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
+            end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
+            seanEvents += (start + " - " + end + " | " + event['summary'] + "\n") # (start + " " + event['summary']+ end + "\n")
         return seanEvents
     ##Sam
     if name is "Sam":
@@ -132,9 +133,20 @@ def Get_Google_Calendar(name):
         if not events:
             samEvents += 'No upcoming events found.\n'
         for event in events:
-            start = event['start'].get('dateTime', event['start'].get('date'))
-            samEvents += (start + " " + event['summary'] + "\n")
+            start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
+            end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
+            samEvents += (start + " - " + end + " | " + event['summary'] + "\n")
         return samEvents
+
+def parse_event(time):
+    i = time.find("T")
+    out = time[i + 1:i + 6]
+    hour = int(out[0:2])
+    if hour > 12:
+        out = str(hour - 12) + out[-3:] + "PM"
+    else:
+        out += "AM"
+    return out
 
     ##print (kyleEvents + seanEvents + samEvents)
 if __name__ == '__Get_Google_Calendar__':
