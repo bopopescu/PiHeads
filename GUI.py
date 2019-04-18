@@ -245,15 +245,15 @@ class PageTwo(tk.Frame):
         self.kyleLabel = tk.Label(self)
         self.kyleLabel.configure(text=home.check_if_home('Kyle'), fg='white', bg='black', font=("Helvetica", 25))
         self.kyleLabel.grid(row=1, column=0, sticky='N')
-
+        self.columnconfigure(0, minsize=120)
         self.line1 = Canvas(self)
         self.line1.grid(row=1, column=1, padx=15, rowspan=100)
         self.line1.config(bg='black', width=1, height=775)
-
+        self.columnconfigure(1, minsize=120)
         self.samLabel = tk.Label(self)
         self.samLabel.configure(text=home.check_if_home('Sam'), fg='white', bg='black', font=("Helvetica", 25))
         self.samLabel.grid(row=1, column=2, sticky='N')
-
+        self.columnconfigure(2, minsize=120)
         self.line2 = Canvas(self)
         self.line2.grid(row=1, column=3, padx=15, rowspan=100)
         self.line2.config(bg='black', width=1, height=775)
