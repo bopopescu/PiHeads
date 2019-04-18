@@ -55,8 +55,6 @@ class SampleApp(tk.Tk):
             self.currFrame = 0
 
     def start(self):
-        if time.strftime("%H%M") == "0000":
-            self.destroy()
         if self.weatherCount == 360:
             PageOne.update_weather(self.frames["PageOne"])
             PageTwo.update_cal(self.frames["PageTwo"])
@@ -151,20 +149,20 @@ class PageOne(tk.Frame):
         # Sunrise / Sunset
         self.sunriseLabel = tk.Label(self)
         self.sunriseLabel.grid(row=1, column=2, sticky="N")
-        self.sunriseLabel.configure(text=self.w.sunrise(), fg='white', bg='black', font=("Helvetica", 50))
+        self.sunriseLabel.configure(text="Rise:\n{}".format(self.w.sunrise()), fg='white', bg='black', font=("Helvetica", 50))
 
         self.sunsetLabel = tk.Label(self)
         self.sunsetLabel.grid(row=1, column=3, sticky="N")
-        self.sunsetLabel.configure(text=self.w.sunset(), fg='white', bg='black', font=("Helvetica", 50))
+        self.sunsetLabel.configure(text="Set:\n{}".format(self.w.sunset()), fg='white', bg='black', font=("Helvetica", 50))
 
         # High / Low
         self.highLabel = tk.Label(self)
         self.highLabel.grid(row=0, column=2)
-        self.highLabel.configure(text=self.w.high, fg='white', bg='black', font=("Helvetica", 80))
+        self.highLabel.configure(text="High:\n{}".format(self.w.high), fg='white', bg='black', font=("Helvetica", 80))
 
         self.lowLabel = tk.Label(self)
         self.lowLabel.grid(row=0, column=3)
-        self.lowLabel.configure(text=self.w.low, fg='white', bg='black', font=("Helvetica", 80))
+        self.lowLabel.configure(text="Low:\n{}".format(self.w.low), fg='white', bg='black', font=("Helvetica", 80))
 
         # Line
         self.line = Canvas(self)
@@ -174,10 +172,10 @@ class PageOne(tk.Frame):
         # Forecast
         self.f = weather.Forecast()
         days = self.f.getForecast()
-        day1 = "{}\n{}\n{}".format(days['day1']['name'], days['day1']['high'], days['day1']['low'], days['day1']['description'])
-        day2 = "{}\n{}\n{}".format(days['day2']['name'], days['day2']['high'], days['day2']['low'], days['day2']['description'])
-        day3 = "{}\n{}\n{}".format(days['day3']['name'], days['day3']['high'], days['day3']['low'], days['day3']['description'])
-        day4 = "{}\n{}\n{}".format(days['day4']['name'], days['day4']['high'], days['day4']['low'], days['day4']['description'])
+        day1 = "{}\nH: {}\nL: {}".format(days['day1']['name'], days['day1']['high'], days['day1']['low'], days['day1']['description'])
+        day2 = "{}\nH: {}\nL: {}".format(days['day2']['name'], days['day2']['high'], days['day2']['low'], days['day2']['description'])
+        day3 = "{}\nH: {}\nL: {}".format(days['day3']['name'], days['day3']['high'], days['day3']['low'], days['day3']['description'])
+        day4 = "{}\nH: {}\nL: {}".format(days['day4']['name'], days['day4']['high'], days['day4']['low'], days['day4']['description'])
 
         self.d1Image = tk.PhotoImage(file=self.w.displayConditions(days['day1']['description']))
         self.d1ImageLabel = tk.Label(self)
@@ -217,8 +215,8 @@ class PageOne(tk.Frame):
         self.conditionLabel.configure(text=self.w.condition)
         self.conditionImageLabel.configure(image=self.conditionImage)
         self.windLabel.configure(text=self.w.wind)
-        self.highLabel.configure(text=self.w.high)
-        self.lowLabel.configure(text=self.w.low)
+        self.highLabel.configure(text="Low:\n{}".format(self.w.high))
+        self.lowLabel.configure(text="High:\n{}".format(self.w.low))
 
         # Forecast
         self.f = weather.Forecast()
