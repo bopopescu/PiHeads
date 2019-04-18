@@ -26,20 +26,19 @@ class Weather:
     def displayConditions(self, s):
         if s == "Clouds":
             return "images/clouds.gif"
-        elif s == "Clear":
-            return "images/sunny.gif"
         elif s == "Rain" or s == "Drizzle" or s == "Mist":
             return "images/rain.gif"
         elif s == "Thunderstorm":
             return "images/thunder.gif"
         elif s == "Snow":
             return "images/snow.gif"
-        elif s == "Fog":
+        elif s == "Fog" or s == "Haze":
             return "images/fog.gif"
-        # add other weather conditions
+        elif s == "Tornado":
+            return "images/tornado.gif"
 
         # defaults to sun image
-        return "imagessunny.gif"
+        return "images/sunny.gif"
 
     def sunrise(self):
         return time.strftime("%I:%M %p", time.localtime(self.weatherData['sys']['sunrise']))

@@ -3,6 +3,7 @@ from __future__ import print_function
 import datetime
 import pickle
 import os.path
+import time
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -44,18 +45,33 @@ def Get_Google_Calendar(name):
         now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
         ##print('Getting the upcoming 5 events')
         events_result = service.events().list(calendarId='primary', timeMin=now,
-                                            maxResults=5, singleEvents=True,
+                                            maxResults=10, singleEvents=True,
                                             orderBy='startTime').execute()
         events = events_result.get('items', [])
 
+        today = int(time.strftime("%d", time.localtime()))
+        todayEvents = 0
+        tomorrowEvents = 0
         if not events:
             kyleEvents += 'No upcoming events found.\n'
         for event in events:
-            start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
-            end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
-            kyleEvents += (start + " - " + end + " | " + event['summary'] + "\n")
+            if find_date(today, event['start'].get('dateTime', event['start'].get('date'))) and todayEvents < 5:
+                if todayEvents == 0:
+                    kyleEvents += "Today:\n"
+                # print(event['start'].get('dateTime', event['start'].get('date')))
+                start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
+                end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
+                kyleEvents += (start + " - " + end + " | " + event['summary'] + "\n") # (start + " " + event['summary']+ end + "\n")
+                todayEvents += 1
+            elif find_date(today + 1, event['start'].get('dateTime', event['start'].get('date'))) and tomorrowEvents < 5:
+                if tomorrowEvents == 0:
+                    kyleEvents += "\nTomorrow:\n"
+                # print(event['start'].get('dateTime', event['start'].get('date')))
+                start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
+                end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
+                kyleEvents += (start + " - " + end + " | " + event['summary'] + "\n") # (start + " " + event['summary']+ end + "\n")
+                tomorrowEvents += 1
         return kyleEvents
-
 
     ##Sean
     if name is "Sean":
@@ -86,16 +102,32 @@ def Get_Google_Calendar(name):
         now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
         ##print('Getting the upcoming 5 events')
         events_result = service.events().list(calendarId='primary', timeMin=now,
-                                              maxResults=5, singleEvents=True,
+                                              maxResults=10, singleEvents=True,
                                               orderBy='startTime').execute()
         events = events_result.get('items', [])
 
+        today = int(time.strftime("%d", time.localtime()))
+        todayEvents = 0
+        tomorrowEvents = 0
         if not events:
             seanEvents += 'No upcoming events found.\n'
         for event in events:
-            start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
-            end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
-            seanEvents += (start + " - " + end + " | " + event['summary'] + "\n") # (start + " " + event['summary']+ end + "\n")
+            if find_date(today, event['start'].get('dateTime', event['start'].get('date'))) and todayEvents < 5:
+                if todayEvents == 0:
+                    seanEvents += "Today:\n"
+                # print(event['start'].get('dateTime', event['start'].get('date')))
+                start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
+                end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
+                seanEvents += (start + " - " + end + " | " + event['summary'] + "\n") # (start + " " + event['summary']+ end + "\n")
+                todayEvents += 1
+            elif find_date(today + 1, event['start'].get('dateTime', event['start'].get('date'))) and tomorrowEvents < 5:
+                if tomorrowEvents == 0:
+                    seanEvents += "\nTomorrow:\n"
+                # print(event['start'].get('dateTime', event['start'].get('date')))
+                start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
+                end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
+                seanEvents += (start + " - " + end + " | " + event['summary'] + "\n") # (start + " " + event['summary']+ end + "\n")
+                tomorrowEvents += 1
         return seanEvents
     ##Sam
     if name is "Sam":
@@ -126,16 +158,34 @@ def Get_Google_Calendar(name):
         now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
         ##print('Getting the upcoming 5 events')
         events_result = service.events().list(calendarId='primary', timeMin=now,
-                                              maxResults=5, singleEvents=True,
+                                              maxResults=10, singleEvents=True,
                                               orderBy='startTime').execute()
         events = events_result.get('items', [])
 
+        today = int(time.strftime("%d", time.localtime()))
+        todayEvents = 0
+        tomorrowEvents = 0
         if not events:
             samEvents += 'No upcoming events found.\n'
         for event in events:
-            start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
-            end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
-            samEvents += (start + " - " + end + " | " + event['summary'] + "\n")
+            if find_date(today, event['start'].get('dateTime', event['start'].get('date'))) and todayEvents < 5:
+                if todayEvents == 0:
+                    samEvents += "Today:\n"
+                # print(event['start'].get('dateTime', event['start'].get('date')))
+                start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
+                end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
+                samEvents += (start + " - " + end + " | " + event[
+                    'summary'] + "\n")  # (start + " " + event['summary']+ end + "\n")
+                todayEvents += 1
+            elif find_date(today + 1, event['start'].get('dateTime', event['start'].get('date'))) and tomorrowEvents < 5:
+                if tomorrowEvents == 0:
+                    samEvents += "\nTomorrow:\n"
+                # print(event['start'].get('dateTime', event['start'].get('date')))
+                start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
+                end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
+                samEvents += (start + " - " + end + " | " + event[
+                    'summary'] + "\n")  # (start + " " + event['summary']+ end + "\n")
+                tomorrowEvents += 1
         return samEvents
 
 def parse_event(time):
@@ -147,6 +197,14 @@ def parse_event(time):
     else:
         out += "AM"
     return out
+
+def find_date(day, time):
+    if day == int(time[8:10]):
+        return True
+    if day > 28 and int(time[8:10]) == 1:
+        return True
+    return False
+
 
     ##print (kyleEvents + seanEvents + samEvents)
 if __name__ == '__Get_Google_Calendar__':
