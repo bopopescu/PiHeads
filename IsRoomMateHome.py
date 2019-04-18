@@ -21,8 +21,8 @@ def check_if_home(name):
     kyleData = json.loads(kyleResponse.text)
 
     if name is 'Kyle':
-        return "Kyle: {}".format(kyleData['last_value'])
+        return "Kyle's Location: {}".format(kyleData['last_value'])
     if name is 'Sam':
-        return "Sam: {}".format(samData['last_value'])
+        return "Sam's Location: {}".format(samData['last_value'])
     if name is 'Sean':
-        return "Sean: {}".format(seanData['feeds'][2]['last_value'])
+        return "Sean's Location: {}".format(seanData['feeds'][2]['last_value'])

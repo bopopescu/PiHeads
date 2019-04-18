@@ -239,7 +239,7 @@ class PageTwo(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="Roommates:", fg='white', bg='black', font=("Helvetica", 50))
+        label = tk.Label(self, text="Roommate Status:", fg='white', bg='black', font=("Helvetica", 50))
         label.grid(row=0, column=2, pady=25)
 
         self.kyleLabel = tk.Label(self)
@@ -263,8 +263,6 @@ class PageTwo(tk.Frame):
         self.seanLabel.grid(row=1, column=4, sticky='N')
 
         ##Calendars
-        label2 = tk.Label(self, text="Calendars:", fg='white', bg='black', font=("Helvetica", 50))
-        label2.grid(row=2, column=2)
         self.kyleCal = tk.Label(self)
         self.kyleCal.configure(text=calendar.Get_Google_Calendar('Kyle'), fg='white', bg='black', font=("Helvetica", 25))
         self.kyleCal.grid(row=3, column=0)
