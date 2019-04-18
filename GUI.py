@@ -158,11 +158,11 @@ class PageOne(tk.Frame):
         # High / Low
         self.highLabel = tk.Label(self)
         self.highLabel.grid(row=0, column=2)
-        self.highLabel.configure(text="High:\n{}".format(self.w.high), fg='white', bg='black', font=("Helvetica", 80))
+        self.highLabel.configure(text="High:\n{}".format(self.w.high), fg='white', bg='black', font=("Helvetica", 70))
 
         self.lowLabel = tk.Label(self)
         self.lowLabel.grid(row=0, column=3)
-        self.lowLabel.configure(text="Low:\n{}".format(self.w.low), fg='white', bg='black', font=("Helvetica", 80))
+        self.lowLabel.configure(text="Low:\n{}".format(self.w.low), fg='white', bg='black', font=("Helvetica", 70))
 
         # Line
         self.line = Canvas(self)
