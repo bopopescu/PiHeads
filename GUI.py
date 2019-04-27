@@ -133,7 +133,8 @@ class PageOne(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        colSize = 120
+        colSize = 100
+        fontSize = 40
         self.w = weather.Weather()
         self.tempLabel = tk.Label(self)
         self.tempLabel.grid(row=0, column=1, sticky="WS")
@@ -141,7 +142,7 @@ class PageOne(tk.Frame):
 
         self.conditionLabel = tk.Label(self)
         self.conditionLabel.grid(row=1, column=0)
-        self.conditionLabel.configure(text=self.w.condition, fg='white', bg='black', font=("Helvetica", 50))
+        self.conditionLabel.configure(text=self.w.condition, fg='white', bg='black', font=("Helvetica", fontSize))
 
         self.conditionImage = tk.PhotoImage(file=self.w.conditionFile)
         self.conditionImageLabel = tk.Label(self)
@@ -150,16 +151,16 @@ class PageOne(tk.Frame):
 
         self.windLabel = tk.Label(self)
         self.windLabel.grid(row=1, column=1, sticky="W")
-        self.windLabel.configure(text=self.w.wind, fg='white', bg='black', font=("Helvetica", 50))
+        self.windLabel.configure(text=self.w.wind, fg='white', bg='black', font=("Helvetica", fontSize))
 
         # Sunrise / Sunset
         self.sunriseLabel = tk.Label(self)
         self.sunriseLabel.grid(row=1, column=2, sticky="N")
-        self.sunriseLabel.configure(text="Rise:\n{}".format(self.w.sunrise()), fg='white', bg='black', font=("Helvetica", 50))
+        self.sunriseLabel.configure(text="Rise:\n{}".format(self.w.sunrise()), fg='white', bg='black', font=("Helvetica", fontSize))
 
         self.sunsetLabel = tk.Label(self)
         self.sunsetLabel.grid(row=1, column=3, sticky="N")
-        self.sunsetLabel.configure(text="Set:\n{}".format(self.w.sunset()), fg='white', bg='black', font=("Helvetica", 50))
+        self.sunsetLabel.configure(text="Set:\n{}".format(self.w.sunset()), fg='white', bg='black', font=("Helvetica", fontSize))
 
         # High / Low
         self.highLabel = tk.Label(self)
@@ -172,7 +173,7 @@ class PageOne(tk.Frame):
 
         # Line
         self.line = Canvas(self)
-        self.line.grid(row=8, column=0, columnspan=100, pady=50)
+        self.line.grid(row=8, column=0, columnspan=100, pady=30)
         self.line.config(bg='white', width=tk.Frame.winfo_screenwidth(self), height=2)
 
         # Forecast
@@ -200,15 +201,15 @@ class PageOne(tk.Frame):
         self.d4ImageLabel.grid(row=9, column=3)
         self.d4ImageLabel.configure(image=self.d1Image, bg='black')
 
-        self.day1Label = tk.Label(self, text=day1, fg='white', bg='black', font=("Helvetica", 50))
-        self.day2Label = tk.Label(self, text=day2, fg='white', bg='black', font=("Helvetica", 50))
-        self.day3Label = tk.Label(self, text=day3, fg='white', bg='black', font=("Helvetica", 50))
-        self.day4Label = tk.Label(self, text=day4, fg='white', bg='black', font=("Helvetica", 50))
+        self.day1Label = tk.Label(self, text=day1, fg='white', bg='black', font=("Helvetica", fontSize))
+        self.day2Label = tk.Label(self, text=day2, fg='white', bg='black', font=("Helvetica", fontSize))
+        self.day3Label = tk.Label(self, text=day3, fg='white', bg='black', font=("Helvetica", fontSize))
+        self.day4Label = tk.Label(self, text=day4, fg='white', bg='black', font=("Helvetica", fontSize))
 
-        self.day1Label.grid(row=10, column=0, padx=colSize, pady=25)
-        self.day2Label.grid(row=10, column=1, padx=colSize, pady=25)
-        self.day3Label.grid(row=10, column=2, padx=colSize, pady=25)
-        self.day4Label.grid(row=10, column=3, padx=colSize, pady=25)
+        self.day1Label.grid(row=10, column=0, padx=colSize, pady=15)
+        self.day2Label.grid(row=10, column=1, padx=colSize, pady=15)
+        self.day3Label.grid(row=10, column=2, padx=colSize, pady=15)
+        self.day4Label.grid(row=10, column=3, padx=colSize, pady=15)
 
         # Clock
         self.Clock = tk.Label(self, text=time.strftime("%A, %B %d | %I:%M %p"), fg='white', bg='black',

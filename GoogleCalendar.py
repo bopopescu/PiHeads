@@ -61,7 +61,7 @@ def Get_Google_Calendar(name):
                 # print(event['start'].get('dateTime', event['start'].get('date')))
                 start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
                 end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
-                kyleEvents += (start + " - " + end + " | " + event['summary'] + "\n") # (start + " " + event['summary']+ end + "\n")
+                kyleEvents += (start + " - " + end + "\n" + event['summary'] + "\n\n") # (start + " " + event['summary']+ end + "\n")
                 todayEvents += 1
             elif find_date(tomorrow, event['start'].get('dateTime', event['start'].get('date'))) and tomorrowEvents < 5:
                 if tomorrowEvents == 0:
@@ -69,7 +69,7 @@ def Get_Google_Calendar(name):
                 # print(event['start'].get('dateTime', event['start'].get('date')))
                 start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
                 end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
-                kyleEvents += (start + " - " + end + " | " + event['summary'] + "\n") # (start + " " + event['summary']+ end + "\n")
+                kyleEvents += (start + " - " + end + "\n" + event['summary'] + "\n\n") # (start + " " + event['summary']+ end + "\n")
                 tomorrowEvents += 1
         return kyleEvents
 
@@ -119,7 +119,7 @@ def Get_Google_Calendar(name):
                 # print(event['start'].get('dateTime', event['start'].get('date')))
                 start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
                 end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
-                seanEvents += (start + " - " + end + " | " + event['summary'] + "\n") # (start + " " + event['summary']+ end + "\n")
+                seanEvents += (start + " - " + end + "\n" + event['summary'] + "\n\n") # (start + " " + event['summary']+ end + "\n")
                 todayEvents += 1
             elif find_date(tomorrow, event['start'].get('dateTime', event['start'].get('date'))) and tomorrowEvents < 5:
                 if tomorrowEvents == 0:
@@ -127,7 +127,7 @@ def Get_Google_Calendar(name):
                 # print(event['start'].get('dateTime', event['start'].get('date')))
                 start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
                 end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
-                seanEvents += (start + " - " + end + " | " + event['summary'] + "\n") # (start + " " + event['summary']+ end + "\n")
+                seanEvents += (start + " - " + end + "\n" + event['summary'] + "\n\n") # (start + " " + event['summary']+ end + "\n")
                 tomorrowEvents += 1
         return seanEvents
     ##Sam
@@ -172,21 +172,21 @@ def Get_Google_Calendar(name):
         for event in events:
             if find_date(today, event['start'].get('dateTime', event['start'].get('date'))) and todayEvents < 5:
                 if todayEvents == 0:
-                    samEvents += "Today:\n"
+                    samEvents += "Today:\n\n"
                 # print(event['start'].get('dateTime', event['start'].get('date')))
                 start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
                 end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
-                samEvents += (start + " - " + end + " | " + event[
-                    'summary'] + "\n")  # (start + " " + event['summary']+ end + "\n")
+                samEvents += (start + " - " + end + "\n" + event[
+                    'summary'] + "\n\n")  # (start + " " + event['summary']+ end + "\n")
                 todayEvents += 1
             elif find_date(tomorrow, event['start'].get('dateTime', event['start'].get('date'))) and tomorrowEvents < 5:
                 if tomorrowEvents == 0:
-                    samEvents += "\nTomorrow:\n"
+                    samEvents += "\nTomorrow:\n\n"
                 # print(event['start'].get('dateTime', event['start'].get('date')))
                 start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
                 end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
-                samEvents += (start + " - " + end + " | " + event[
-                    'summary'] + "\n")  # (start + " " + event['summary']+ end + "\n")
+                samEvents += (start + " - " + end + "\n" + event[
+                    'summary'] + "\n\n")  # (start + " " + event['summary']+ end + "\n")
                 tomorrowEvents += 1
         return samEvents
 
