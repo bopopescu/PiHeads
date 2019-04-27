@@ -245,15 +245,15 @@ class PageTwo(tk.Frame):
         label = tk.Label(self, text="Roommate Status:", fg='white', bg='black', font=("Helvetica", 40))
         label.grid(row=0, column=2, pady=25)
 
-        textSize = 20
+        textSize = 15
         self.kyleLabel = tk.Label(self)
         self.kyleLabel.configure(text=home.check_if_home('Kyle'), fg='white', bg='black', font=("Helvetica", textSize))
         self.kyleLabel.grid(row=1, column=0, sticky='N')
         self.columnconfigure(0, uniform=1)
 
         self.line1 = Canvas(self)
-        self.line1.grid(row=1, column=1, padx=15, rowspan=100)
-        self.line1.config(bg='black', width=1, height=500)
+        self.line1.grid(row=1, column=1, padx=15, rowspan=3)
+        self.line1.config(bg='black', width=1, height=600)
 
         self.samLabel = tk.Label(self)
         self.samLabel.configure(text=home.check_if_home('Sam'), fg='white', bg='black', font=("Helvetica", textSize))
@@ -261,8 +261,8 @@ class PageTwo(tk.Frame):
         self.columnconfigure(2, uniform=1)
 
         self.line2 = Canvas(self)
-        self.line2.grid(row=1, column=3, padx=15, rowspan=100)
-        self.line2.config(bg='black', width=1, height=500)
+        self.line2.grid(row=1, column=3, padx=15, rowspan=3)
+        self.line2.config(bg='black', width=1, height=600)
 
         self.seanLabel = tk.Label(self)
         self.seanLabel.configure(text=home.check_if_home('Sean'), fg='white', bg='black', font=("Helvetica", textSize))
