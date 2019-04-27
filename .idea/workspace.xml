@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="51eb4bee-4548-476c-8da0-1ccbeb93fb07" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token.kyle" beforeDir="false" afterPath="$PROJECT_DIR$/token.kyle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token.sam" beforeDir="false" afterPath="$PROJECT_DIR$/token.sam" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token.sean" beforeDir="false" afterPath="$PROJECT_DIR$/token.sean" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/bin/token.kyle" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/token.kyle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/bin/token.sam" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/token.sam" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/bin/token.sean" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/token.sean" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,6 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/PiHeads$GUI__1_.coverage" NAME="GUI (1) Coverage Results" MODIFIED="1556137375173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/bin" />
     <SUITE FILE_PATH="coverage/PiHeads$Unnamed.coverage" NAME="weather Coverage Results" MODIFIED="1551907237056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/PiHeads$FormatCalendar.coverage" NAME="FormatCalendar Coverage Results" MODIFIED="1555018688534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PiHeads$IsRoomMateHome.coverage" NAME="IsRoomMateHome Coverage Results" MODIFIED="1554334534477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -28,13 +29,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1920">
-              <caret line="128" column="21" selection-start-line="128" selection-start-column="21" selection-end-line="128" selection-end-column="21" />
+            <state relative-caret-position="42">
+              <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/bin/credentials.json">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -121,9 +127,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1440" />
+    <option name="width" value="720" />
     <option name="height" value="813" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -134,6 +140,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -146,17 +153,10 @@
               <item name="PiHeads" type="462c0819:PsiDirectoryNode" />
               <item name="venv" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="PiHeads" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PiHeads" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -177,12 +177,13 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/venv/bin" />
       <recent name="C:\Users\Sam Lavin\PycharmProjects\PiHeads\PiHeads" />
       <recent name="C:\Users\Sam Lavin\PycharmProjects\PiHeads\PiHeads\venv" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -197,7 +198,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.GUI">
+  <component name="RunManager" selected="Python.GUI (1)">
     <configuration name="FormatCalendar" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PiHeads" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -212,6 +213,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FormatCalendar.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="GUI (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="PiHeads" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/venv/bin" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/bin/GUI.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -264,28 +287,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="IsRoomMateHome" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="PiHeads" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/IsRoomMateHome.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="weather" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PiHeads" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -312,16 +313,16 @@
       <item itemvalue="Python.FormatCalendar" />
       <item itemvalue="Python.GUI" />
       <item itemvalue="Python.GoogleCalendar" />
-      <item itemvalue="Python.IsRoomMateHome" />
       <item itemvalue="Python.weather" />
+      <item itemvalue="Python.GUI (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.GUI (1)" />
         <item itemvalue="Python.GUI" />
         <item itemvalue="Python.FormatCalendar" />
         <item itemvalue="Python.GoogleCalendar" />
         <item itemvalue="Python.weather" />
-        <item itemvalue="Python.IsRoomMateHome" />
       </list>
     </recent_temporary>
   </component>
@@ -375,7 +376,8 @@
       <workItem from="1555734479857" duration="373000" />
       <workItem from="1555798023129" duration="191000" />
       <workItem from="1555965183952" duration="88000" />
-      <workItem from="1556133136998" duration="1848000" />
+      <workItem from="1556133136998" duration="4631000" />
+      <workItem from="1556388065321" duration="575000" />
     </task>
     <task id="LOCAL-00001" summary="Yes">
       <created>1551906364839</created>
@@ -559,21 +561,28 @@
       <option name="project" value="LOCAL" />
       <updated>1555624502076</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Moved files to venv">
+      <created>1556136077391</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1556136077391</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65744000" />
+    <option name="totallyTimeSpent" value="69102000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="813" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="813" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1702432" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17525035" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49213162" visible="true" weight="0.22884881" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49213162" weight="0.22884881" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3985056" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -682,7 +691,8 @@
     <MESSAGE value="Added new token for Sam" />
     <MESSAGE value="Merge branch 'master' of https://github.com/Salavin/PiHeads&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;token.kyle&#10;#&#9;token.sam&#10;#&#9;token.sean" />
     <MESSAGE value="Improved calendar display to account for switching months, and shrunk width of weather page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved calendar display to account for switching months, and shrunk width of weather page" />
+    <MESSAGE value="Moved files to venv" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved files to venv" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PiHeads$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1555617718601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -731,13 +741,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1920">
-          <caret line="128" column="21" selection-start-line="128" selection-start-column="21" selection-end-line="128" selection-end-column="21" />
+        <state relative-caret-position="42">
+          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/bin/credentials.json">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/weather.py">
       <provider selected="true" editor-type-id="text-editor">
