@@ -6,7 +6,6 @@ import weather
 import IsRoomMateHome as home
 import GoogleCalendar as calendar
 from tkinter import Canvas
-from tkinter import ttk
 
 
 class SampleApp(tk.Tk):
@@ -14,8 +13,8 @@ class SampleApp(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
         #self.attributes('-fullscreen', True)
-	self.geometry("1440x900")
-	self.resizable(0, 0)
+        self.geometry("1440x900")
+        self.resizable(0, 0)
 
         self.title_font = tkfont.Font(family='Helvetica', size=18, weight="bold", slant="italic")
 
