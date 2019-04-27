@@ -55,6 +55,7 @@ class SampleApp(tk.Tk):
             self.currFrame = 0
 
     def start(self):
+
         if self.weatherCount == 360:
             PageOne.update_weather(self.frames["PageOne"])
             PageTwo.update_cal(self.frames["PageTwo"])
@@ -144,7 +145,6 @@ class PageOne(tk.Frame):
         self.windLabel = tk.Label(self)
         self.windLabel.grid(row=1, column=1, sticky="W")
         self.windLabel.configure(text=self.w.wind, fg='white', bg='black', font=("Helvetica", 50))
-
 
         # Sunrise / Sunset
         self.sunriseLabel = tk.Label(self)
@@ -283,6 +283,15 @@ class PageTwo(tk.Frame):
         self.samCal.configure(text=calendar.Get_Google_Calendar("Sam"))
         self.seanCal.configure(text=calendar.Get_Google_Calendar("Sean"))
 
+
+def key(event):
+     n = event.char
+     if n == 'q':
+         app.destroy()
+
+
 if __name__ == "__main__":
     app = SampleApp()
+    app.bind("<Key>", key)
     app.mainloop()
+
