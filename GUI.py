@@ -253,7 +253,7 @@ class PageTwo(tk.Frame):
 
         self.line1 = Canvas(self)
         self.line1.grid(row=1, column=1, padx=15, rowspan=3)
-        self.line1.config(bg='black', width=1, height=600)
+        self.line1.config(bg='black', width=1, height=610)
 
         self.samLabel = tk.Label(self)
         self.samLabel.configure(text=home.check_if_home('Sam'), fg='white', bg='black', font=("Helvetica", textSize))
@@ -262,7 +262,7 @@ class PageTwo(tk.Frame):
 
         self.line2 = Canvas(self)
         self.line2.grid(row=1, column=3, padx=15, rowspan=3)
-        self.line2.config(bg='black', width=1, height=600)
+        self.line2.config(bg='black', width=1, height=610)
 
         self.seanLabel = tk.Label(self)
         self.seanLabel.configure(text=home.check_if_home('Sean'), fg='white', bg='black', font=("Helvetica", textSize))

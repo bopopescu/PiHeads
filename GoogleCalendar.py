@@ -195,9 +195,9 @@ def parse_event(time):
     out = time[i + 1:i + 6]
     hour = int(out[0:2])
     if hour > 12:
-        out = str(hour - 12) + out[-3:] + "PM"
+        out = str(hour - 12) + out[-3:] + " PM"
     else:
-        out += "AM"
+        out += " AM"
     return out
 
 def find_date(day, time):
