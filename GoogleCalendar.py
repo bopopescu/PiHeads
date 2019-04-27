@@ -57,7 +57,7 @@ def Get_Google_Calendar(name):
         for event in events:
             if find_date(today, event['start'].get('dateTime', event['start'].get('date'))) and todayEvents < 5:
                 if todayEvents == 0:
-                    kyleEvents += "Today:\n"
+                    kyleEvents += "Today:\n\n"
                 # print(event['start'].get('dateTime', event['start'].get('date')))
                 start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
                 end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
@@ -65,7 +65,7 @@ def Get_Google_Calendar(name):
                 todayEvents += 1
             elif find_date(tomorrow, event['start'].get('dateTime', event['start'].get('date'))) and tomorrowEvents < 5:
                 if tomorrowEvents == 0:
-                    kyleEvents += "\nTomorrow:\n"
+                    kyleEvents += "\nTomorrow:\n\n"
                 # print(event['start'].get('dateTime', event['start'].get('date')))
                 start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
                 end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
@@ -115,7 +115,7 @@ def Get_Google_Calendar(name):
         for event in events:
             if find_date(today, event['start'].get('dateTime', event['start'].get('date'))) and todayEvents < 5:
                 if todayEvents == 0:
-                    seanEvents += "Today:\n"
+                    seanEvents += "Today:\n\n"
                 # print(event['start'].get('dateTime', event['start'].get('date')))
                 start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
                 end = parse_event(event['end'].get('dateTime', event['start'].get('date')))
@@ -123,7 +123,7 @@ def Get_Google_Calendar(name):
                 todayEvents += 1
             elif find_date(tomorrow, event['start'].get('dateTime', event['start'].get('date'))) and tomorrowEvents < 5:
                 if tomorrowEvents == 0:
-                    seanEvents += "\nTomorrow:\n"
+                    seanEvents += "\nTomorrow:\n\n"
                 # print(event['start'].get('dateTime', event['start'].get('date')))
                 start = parse_event(event['start'].get('dateTime', event['start'].get('date')))
                 end = parse_event(event['end'].get('dateTime', event['start'].get('date')))

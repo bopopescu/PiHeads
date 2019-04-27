@@ -80,11 +80,11 @@ class StartPage(tk.Frame):
         self.Brown = cyride.Predictions(862)
         self.Blue = cyride.Predictions(830)
 
-        busFontSize = 25
-        timeFontSize = 20
+        busFontSize = 30
+        timeFontSize = 25
 
 
-        self.Label = tk.Label(self, text="CyRide Predictions at Coover Hall:", fg='white', bg='black',font=("Helvetica", 30))
+        self.Label = tk.Label(self, text="CyRide Predictions at Coover Hall:", fg='white', bg='black',font=("Helvetica", 40))
         self.Label.pack(pady=25)
 
         self.CardinalPrediction = tk.Label(self)
@@ -133,7 +133,7 @@ class PageOne(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        colSize = 100
+        colSize = 110
         fontSize = 40
         self.w = weather.Weather()
         self.tempLabel = tk.Label(self)
@@ -214,7 +214,7 @@ class PageOne(tk.Frame):
         # Clock
         self.Clock = tk.Label(self, text=time.strftime("%A, %B %d | %I:%M %p"), fg='white', bg='black',
                               font=("Helvetica", 15))
-        self.Clock.grid(row=11, column=1, columnspan=2, pady=19)
+        self.Clock.grid(row=11, column=1, columnspan=2)
 
     def update_weather(self):
         self.w = weather.Weather()
@@ -253,7 +253,7 @@ class PageTwo(tk.Frame):
 
         self.line1 = Canvas(self)
         self.line1.grid(row=1, column=1, padx=15, rowspan=100)
-        self.line1.config(bg='black', width=1, height=775)
+        self.line1.config(bg='black', width=1, height=500)
 
         self.samLabel = tk.Label(self)
         self.samLabel.configure(text=home.check_if_home('Sam'), fg='white', bg='black', font=("Helvetica", textSize))
@@ -262,7 +262,7 @@ class PageTwo(tk.Frame):
 
         self.line2 = Canvas(self)
         self.line2.grid(row=1, column=3, padx=15, rowspan=100)
-        self.line2.config(bg='black', width=1, height=775)
+        self.line2.config(bg='black', width=1, height=500)
 
         self.seanLabel = tk.Label(self)
         self.seanLabel.configure(text=home.check_if_home('Sean'), fg='white', bg='black', font=("Helvetica", textSize))
@@ -280,6 +280,11 @@ class PageTwo(tk.Frame):
         self.seanCal = tk.Label(self)
         self.seanCal.configure(text=calendar.Get_Google_Calendar('Sean'), fg='white', bg='black',font=("Helvetica", textSize))
         self.seanCal.grid(row=3, column=4)
+
+        # Clock
+        self.Clock = tk.Label(self, text=time.strftime("%A, %B %d | %I:%M %p"), fg='white', bg='black',
+                              font=("Helvetica", 15))
+        self.Clock.grid(row=4, column=1, columnspan=3, pady=40)
 
     def update_home(self):
         self.kyleLabel.configure(text=home.check_if_home('Kyle'))
